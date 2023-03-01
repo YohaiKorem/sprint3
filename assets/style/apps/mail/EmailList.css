@@ -1,0 +1,11 @@
+.mail-list ul {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  background-color: lightblue;
+  list-style-type: none;
+}
+.mail-list ul li {
+  padding: 10px;
+  background-color: darkseagreen;
+}
