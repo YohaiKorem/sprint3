@@ -2,6 +2,7 @@ import { mailService } from '../services/mail.service.js'
 import { utilService } from '../../../services/util.service.js'
 import MailList from '../cmps/MailList.js'
 import MailFilter from '../cmps/MailFilter.js'
+import MailFolderList from '../cmps/MailFolderList.js'
 import {
   showErrorMsg,
   showSuccessMsg,
@@ -17,12 +18,9 @@ export default {
   <button @click="test">test</button>
   <button @click="clearStorage">clear</button>
 </div>
-    <nav class="mail-nav flex ">
-      
-      <RouterLink to="/mail/edit">Send an Email</RouterLink> |
-      <RouterLink to="/mail/trash">Trash folder</RouterLink> |
-      <RouterLink to="/mail/spam">Spam folder</RouterLink>
-    </nav>
+<aside class="folder-list-container">
+  <MailFolderList/>
+</aside>
     <MailFilter @filter="setCriteria"/>
   </div>
     <MailList 
@@ -85,5 +83,6 @@ export default {
   components: {
     MailList,
     MailFilter,
+    MailFolderList,
   },
 }
