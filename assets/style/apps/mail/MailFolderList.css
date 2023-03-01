@@ -13,4 +13,5 @@
 }
 .folder-list li {
   color: rgb(230, 140, 22);
+  cursor: pointer;
 }

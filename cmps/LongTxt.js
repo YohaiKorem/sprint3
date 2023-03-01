@@ -12,7 +12,7 @@ export default {
     },
   },
   template: `
-            <article>
+            <article class="long-txt">
                <p>{{displayTxt}}</p>
                <!-- <button class="btn-more" @click="isShown = !isShown" v-if="txt.length > length">
                 Read {{isShown ? 'less' : 'more'}}

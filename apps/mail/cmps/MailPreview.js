@@ -1,28 +1,31 @@
 import { mailService } from '../services/mail.service.js'
+import LongTxt from '../../../cmps/LongTxt.js'
 
 export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
+    <article :class="isRead + ' mail-preview'">
   <div class="btns-container">
-<button>★</button>
-    <button @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</button>
-    <button @click="mail.folder='trash'" class="btn-remove"> <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon"> </button>
+    <div @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</div>
+    <div @click="star">★</div>
+    <div @click="mail.folder='trash'" class="btn-remove"> <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon"> </div>
   </div>
-  <RouterLink class="mail-preview" :to="'mail/' + mail.id">
-        <article :class="isRead + 'mail-preview'">
-        <!-- <span class="mail-labels">{{mail.labels}}</span>   -->
-         <h2 class="mail-from">from: {{ mail.from }}</h2> <span class="mail-timestamp">sent at: {{mail.sentAt}}</span>
-            <!-- <h3 class="mail-to">to: {{ mail.to }}</h3> -->
-            <!-- <p class="mail-cotent">{{mail.body}}</p> -->
+  <!-- <RouterLink class="mail-preview" :to="'mail/' + mail.id">        </RouterLink> -->
 
+         <h2 class="mail-from">from: {{ mail.from }}</h2> 
+         <LongTxt :txt="mail.body"/>
+         <span class="mail-timestamp">sent at: {{mail.sentAt}}</span>
         </article>
-        </RouterLink>
     `,
 
   methods: {
     markAsRead() {
       this.mail.isRead = !this.mail.isRead
+      mailService.save(this.mail)
+    },
+    star() {
+      this.mail.isStarred = !this.mail.isStarred
       mailService.save(this.mail)
     },
   },
@@ -31,5 +34,12 @@ export default {
       if (this.mail.isRead) return 'read'
       else return 'unread'
     },
+    isStarred() {
+      if (this.mail.isStarred) return 'starred'
+      else return ''
+    },
+  },
+  components: {
+    LongTxt,
   },
 }

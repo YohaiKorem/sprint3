@@ -74,6 +74,13 @@ function _createMails() {
     mails.push(_createMail('yohai', 'noa'))
     mails.push(_createMail())
     mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
