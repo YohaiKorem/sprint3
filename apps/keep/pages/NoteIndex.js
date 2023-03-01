@@ -55,7 +55,7 @@ export default {
       this.filterBy = filterBy
     },
     updateNote(note) {
-      console.log('hi')
+      console.log('note:', note)
       noteService.save(note)
         .then(() => {
           noteService.query()

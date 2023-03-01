@@ -1,5 +1,6 @@
 import { noteService } from '../services/note.service.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
+import ColorPicker from './ColorPicker.js'
 
 export default {
   name: 'NoteEdit',
@@ -12,7 +13,9 @@ export default {
           <div class="editable-div" ref="txt" contenteditable="true" @input="changeTxt">{{note.info.txt}}</div>
           <div class="tool-bar flex align-center justify-between">
             <div class="tool-box flex justify-center">
-              <div class="btn-bg-color" @click.prevent="choose-color"></div>
+              <div class="btn-bg-color" @click.prevent="toggleColorPicker">
+                <ColorPicker :note="note" @updateColor="onUpdateColor" v-show="showColorPicker"/>
+              </div>
               <div class="btn-remove" @click.prevent="removeNote"></div>
             </div>
             <RouterLink :to="'/keep'">close</RouterLink>
@@ -27,10 +30,17 @@ export default {
   data() {
     return {
       note: null,
+      showColorPicker: false,
     }
   },
 
   methods: {
+    onUpdateColor(color) {
+      console.log('color to be updated:', color)
+      this.note.style.backgroundColorס = color
+      console.log('note to be updated:', this.note)
+      eventBusService.emit('updateNote', this.note)
+    },
 
     changeTitle() {
       this.note.info.title = this.$refs.title.innerText
@@ -45,12 +55,16 @@ export default {
     removeNote() {
       eventBusService.emit('removeNote', this.note.id)
       this.$router.push({ name: 'keep' })
+    },
+
+    toggleColorPicker() {
+      console.log('toggling bgc picker')
+      this.showColorPicker = !this.showColorPicker
     }
   },
 
   computed: {
     styleNote() {
-      console.log(this.note.style.backgroundColor)
       return {
         backgroundColor: this.note.style.backgroundColor
       }
@@ -65,5 +79,6 @@ export default {
   },
 
   components: {
+    ColorPicker,
   },
 }
