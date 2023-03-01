@@ -1,4 +1,4 @@
-.modal {
+.note-edit .modal {
   display: flex;
   flex-direction: column;
 
@@ -17,7 +17,11 @@
   background-color: white;
 }
 
-.modal-overlay {
+.note-edit .editable-div {
+  padding: 12px;
+}
+
+.note-edit .modal-overlay {
   display: block;
   opacity: 0.5;
 
