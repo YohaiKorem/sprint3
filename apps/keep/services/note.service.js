@@ -12,6 +12,7 @@ const demoNotes = [
       backgroundColor: '#FFF475'
     },
     info: {
+      title: 'Yohai hagever',
       txt: 'Fullstack Me Baby!'
     }
   },
@@ -24,6 +25,7 @@ const demoNotes = [
       backgroundColor: '#CCFF90'
     },
     info: {
+      title: 'Yohai hagever',
       txt: 'wowww'
     }
   },
@@ -75,7 +77,6 @@ function query(filterBy = {}) {
 
 function get(noteId) {
   return storageService.get(NOTE_KEY, noteId)
-    .then(_setNextPrevNoteId)
 }
 
 function remove(noteId) {

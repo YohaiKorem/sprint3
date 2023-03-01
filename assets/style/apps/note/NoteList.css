@@ -1,9 +1,10 @@
 .note-list {
   column-count: 4;
   break-inside: avoid-column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .note-list>* {
   break-inside: avoid-column;
+  margin-bottom: 10px;
 }

@@ -24,10 +24,17 @@ export default {
   },
 
   methods: {
-    toggleModal() {
-      this.showModal = !this.showModal
+    onRemoveNote(noteId) {
+      noteService.remove(noteId)
+        .then(() => {
+          const idx = this.notes.findIndex(note => note.id === noteId)
+          this.notes.splice(idx, 1)
+          showSuccessMsg('Note Removed')
+        })
+        .catch(err => {
+          showErrorMsg('Note remove failed')
+        })
     },
-
     onSaveNote(newNote) {
       console.log('new note:', newNote)
       noteService.save(newNote)

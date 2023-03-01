@@ -31,7 +31,7 @@ const routerOptions = {
          component: NoteIndex,
          name: 'keep',
          children: [{
-            path: '/keep/edit/:id',
+            path: '/keep/edit/:noteId',
             component: NoteEdit,
             props: true,
             name: 'note-edit'
