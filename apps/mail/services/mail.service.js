@@ -19,14 +19,14 @@ export const mailService = {
 function query(criteria = {}) {
   console.log(criteria)
   return storageService.query(MAIL_KEY).then((mails) => {
-    if (criteria.txt) {
-      console.log(criteria)
-      const regex = new RegExp(criteria.txt, 'i')
-      mails = mails.filter((mail) => regex.test(mail.body))
-    }
-    if (criteria.isTrash) {
-      mails.filter((mail) => (mail.isTrash = true))
-    }
+    // if (criteria.txt) {
+    //   console.log(criteria)
+    //   const regex = new RegExp(criteria.txt, 'i')
+    //   mails = mails.filter((mail) => regex.test(mail.body))
+    // }
+    // if (criteria.isTrash) {
+    //   mails.filter((mail) => (mail.isTrash = true))
+    // }
     // if (filterBy.minSpeed) {
     //     mails = mails.filter(mail => mail.maxSpeed >= filterBy.minSpeed)
     // }

@@ -9,3 +9,7 @@
   padding: 10px;
   background-color: darkseagreen;
 }
+
+.mail-item {
+  cursor: pointer;
+}

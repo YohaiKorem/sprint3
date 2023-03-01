@@ -1,0 +1,4 @@
+.mail-preview:hover,
+.mail-preview > :hover {
+  cursor: pointer;
+}

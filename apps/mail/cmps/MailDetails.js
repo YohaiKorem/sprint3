@@ -1,4 +1,4 @@
 export default {
   name: 'MailDetails',
-  template: `<h1>MailDetails</h1>`,
+  template: `<h1>mail details</h1>`,
 }
