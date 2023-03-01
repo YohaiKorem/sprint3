@@ -23,6 +23,7 @@ export default {
     markAsRead() {
       this.mail.isRead = !this.mail.isRead
       mailService.save(this.mail)
+      this.$emit('readUnread', this.mail.isRead)
     },
     star() {
       this.mail.isStarred = !this.mail.isStarred

@@ -1,3 +1,4 @@
+import { mailService } from '../services/mail.service.js'
 import MailPreview from './MailPreview.js'
 export default {
   name: 'MailList',
@@ -5,17 +6,20 @@ export default {
   template: `<section class="mail-list">
     <ul class="clean-list flex flex-column">
       
-        <li v-for="mail in mails" :key="mail.id" class="mail-item ">
+        <li v-for="mail in mails" :key="mail.id" :class="isRead ? 'read' + ' mail-item' : 'unread' + ' mail-item' ">
            
-        <MailPreview :mail="mail"/>
+        <MailPreview @readUnread="readUnread" :mail="mail"/>
         
         </li>
     </ul>
   </section>`,
+  data() {
+    return { isRead: false }
+  },
   methods: {
-    // moveToTrash(mailId) {
-    //   this.$emit('moveToTrash', mailId)
-    // },
+    readUnread(isRead) {
+      this.isRead = isRead
+    },
   },
   components: {
     MailPreview,
