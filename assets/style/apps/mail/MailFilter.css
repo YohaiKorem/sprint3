@@ -1,0 +1,9 @@
+.mail-filter {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.mail-filter input {
+  width: 100%;
+}

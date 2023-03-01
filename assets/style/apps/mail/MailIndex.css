@@ -4,6 +4,13 @@
   grid-template-rows: 3em 1fr;
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
   row-gap: 20px;
+  background-image: url(/assets/img/mailImg/bgcImg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mail-index > * {
+  opacity: 0.6;
 }
 
 .mail-index > *:not(.full) {
@@ -11,7 +18,7 @@
 }
 
 .mail-index > .full {
-  grid-column: 1/-1;
+  grid-column: 2/5;
 }
 
 .input-heading-container {

@@ -13,16 +13,15 @@ export default {
 <section class="mail-index">
   <div class="input-heading-container full">
 <div class="btns-container">
-
   <h1>Your inbox</h1>
   <button @click="test">test</button>
   <button @click="clearStorage">clear</button>
+</div>
 </div>
 <aside class="folder-list-container">
   <MailFolderList/>
 </aside>
     <MailFilter @filter="setCriteria"/>
-  </div>
     <MailList 
         :mails="filteredMails" 
         @remove="removeMail" /> 
