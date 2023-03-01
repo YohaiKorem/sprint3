@@ -16,11 +16,16 @@ export const mailService = {
   getEmptyMail,
 }
 
-function query(filterBy = {}) {
+function query(criteria = {}) {
+  console.log(criteria)
   return storageService.query(MAIL_KEY).then((mails) => {
-    if (filterBy.txt) {
-      const regex = new RegExp(filterBy.txt, 'i')
+    if (criteria.txt) {
+      console.log(criteria)
+      const regex = new RegExp(criteria.txt, 'i')
       mails = mails.filter((mail) => regex.test(mail.body))
+    }
+    if (criteria.isTrash) {
+      mails.filter((mail) => (mail.isTrash = true))
     }
     // if (filterBy.minSpeed) {
     //     mails = mails.filter(mail => mail.maxSpeed >= filterBy.minSpeed)
@@ -52,6 +57,7 @@ function getEmptyMail(from = '', to = '', subject = '', body = '') {
     body,
     isRead: false,
     isStarred: false,
+    folder: 'inbox',
     sentAt: null,
     removedAt: null,
     from,

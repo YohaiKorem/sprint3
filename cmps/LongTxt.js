@@ -1,17 +1,17 @@
 export default {
-    name: 'LongTxt',
-    props: {
-        txt: {
-            type: String,
-            required: true,
-        },
-        length: {
-            type: Number,
-            required: false,
-            default: 80,
-        },
+  name: 'LongTxt',
+  props: {
+    txt: {
+      type: String,
+      required: true,
     },
-    template: `
+    length: {
+      type: Number,
+      required: false,
+      default: 60,
+    },
+  },
+  template: `
             <article>
                <p>{{displayTxt}}</p>
                <button class="btn-more" @click="isShown = !isShown" v-if="txt.length > length">
@@ -19,18 +19,18 @@ export default {
                 </button>
             </article>
     `,
-    data() {
-        return {
-            isShown: false,
-        };
-    },
+  data() {
+    return {
+      isShown: false,
+    }
+  },
 
-    methods: {},
-    computed: {
-        displayTxt() {
-            if (!this.isShown && this.txt.length > this.length)
-                return this.txt.slice(0, this.length) + '...';
-            return this.txt;
-        },
+  methods: {},
+  computed: {
+    displayTxt() {
+      if (!this.isShown && this.txt.length > this.length)
+        return this.txt.slice(0, this.length) + '...'
+      return this.txt
     },
-};
+  },
+}
