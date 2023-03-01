@@ -1,24 +1,25 @@
 import { noteService } from '../services/note.service.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
-import NoteTxt from './NoteTxt.js'
 
 export default {
   name: 'NoteEdit',
   template: `
-      <section class="note-edit" v-if="note" :style="styleNote">
-        <div class=modal>
+      <section class="note-edit" v-if="note">
+        <div class="modal" :style="styleNote">
           <h2>Edit Note:</h2>
           <img v-if="note.info.url" src="note.info.url" />
           <div class="editable-div" ref="title" contenteditable="true" @input="changeTitle">{{note.info.title}}</div>
           <div class="editable-div" ref="txt" contenteditable="true" @input="changeTxt">{{note.info.txt}}</div>
-          <div class="tool-box flex justify-center">
-            <div class="btn-bg-color" @click.prevent="choose-color"></div>
-            <div class="btn-remove" @click.prevent="removeNote"></div>
-          </div>
-          <RouterLink :to="'/keep'">close</RouterLink>
+          <div class="tool-bar flex align-center justify-between">
+            <div class="tool-box flex justify-center">
+              <div class="btn-bg-color" @click.prevent="choose-color"></div>
+              <div class="btn-remove" @click.prevent="removeNote"></div>
+            </div>
+            <RouterLink :to="'/keep'">close</RouterLink>
         </div>
+          </div>
         <RouterLink :to="'/keep'">
-        <div class="modal-overlay"></div>
+          <div class="modal-overlay"></div>
         </RouterLink>
       </section>
   `,
@@ -51,7 +52,7 @@ export default {
     styleNote() {
       console.log(this.note.style.backgroundColor)
       return {
-        backgroundColor: this.note.style.backgroundColor || 'white',
+        backgroundColor: this.note.style.backgroundColor
       }
     }
   },
@@ -64,6 +65,5 @@ export default {
   },
 
   components: {
-    NoteTxt,
   },
 }

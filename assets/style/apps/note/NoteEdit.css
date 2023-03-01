@@ -14,7 +14,6 @@
   border-radius: 10px;
   transition: all .3s;
   overflow: hidden;
-  background-color: white;
 }
 
 .note-edit .editable-div {
