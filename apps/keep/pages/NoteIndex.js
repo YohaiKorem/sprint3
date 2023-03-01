@@ -1,7 +1,7 @@
 export default {
   name: 'noteIndexCmp',
-  props: [],
-  template: ``,
+  template: `
+  <h1>Hello Keep</h1>`,
 
   data() {
     return {
