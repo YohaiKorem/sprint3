@@ -4,6 +4,7 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 
 _createMails()
 
@@ -44,24 +45,40 @@ function save(mail) {
   }
 }
 
-function getEmptyMail(vendor = '', maxSpeed = 0) {
-  return { id: '', vendor, maxSpeed }
+function getEmptyMail(from = '', to = '', subject = '', body = '') {
+  return {
+    id: '',
+    subject,
+    body,
+    isRead: false,
+    isStarred: false,
+    sentAt: null,
+    removedAt: null,
+    from,
+    to,
+    labels: ['important', 'funny'],
+  }
 }
 
 function _createMails() {
   let mails = utilService.loadFromStorage(MAIL_KEY)
   if (!mails || !mails.length) {
     mails = []
-    mails.push(_createMail('audu', 300))
-    mails.push(_createMail('fiak', 120))
-    mails.push(_createMail('subali', 100))
-    mails.push(_createMail('mitsu', 150))
+    mails.push(_createMail('me', 'you', 'a subject', 'the mail content'))
+    mails.push(_createMail('yohai', 'noa'))
+    mails.push(_createMail())
+    mails.push(_createMail())
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
 
-function _createMail(vendor, maxSpeed = 250) {
-  const mail = getEmptyMail(vendor, maxSpeed)
+function _createMail(
+  from = loggedinUser.email,
+  to = 'myBestFriend@gmail.com',
+  subject = 'sprint3',
+  body = utilService.makeLorem()
+) {
+  const mail = getEmptyMail(from, to, subject, body)
   mail.id = utilService.makeId()
   return mail
 }
