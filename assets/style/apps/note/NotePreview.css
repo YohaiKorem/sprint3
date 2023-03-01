@@ -4,7 +4,7 @@
   padding: 12px;
 }
 
-.tool-box>* {
+.tool-box > * {
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -15,7 +15,7 @@
   opacity: 0.7;
 }
 
-.tool-box>*:hover {
+.tool-box > *:hover {
   background-color: rgba(95, 99, 104, 0.157);
   opacity: 0.86;
 }
@@ -25,5 +25,5 @@
 }
 
 .tool-box .btn-remove {
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgaGVpZ2h0PSIxOCIgd2lkdGg9IjE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMTIgMzhjMCAyLjIxIDEuNzkgNCA0IDRoMTZjMi4yMSAwIDQtMS43OSA0LTR2LTI0aC0yNHYyNHptMjYtMzBoLTdsLTItMmgtMTBsLTIgMmgtN3Y0aDI4di00eiIvPgogPHBhdGggZD0ibTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=)
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgaGVpZ2h0PSIxOCIgd2lkdGg9IjE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMTIgMzhjMCAyLjIxIDEuNzkgNCA0IDRoMTZjMi4yMSAwIDQtMS43OSA0LTR2LTI0aC0yNHYyNHptMjYtMzBoLTdsLTItMmgtMTBsLTIgMmgtN3Y0aDI4di00eiIvPgogPHBhdGggZD0ibTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=);
 }

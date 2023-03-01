@@ -10,7 +10,7 @@
 .mail-item {
   cursor: pointer;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 0.5fr repeat(3, 1fr);
   grid-template-rows: 1fr;
   padding: 10px;
   border-bottom: 0.2px solid rgb(139, 131, 131);
