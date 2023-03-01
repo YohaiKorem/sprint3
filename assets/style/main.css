@@ -17,8 +17,10 @@
 /* Notes pages and cmps */
 @import 'apps/note/NoteIndex.css';
 @import 'apps/note/NoteList.css';
-@import 'apps/note/note-preview.css';
-@import 'apps/note/addNode.css';
+@import 'apps/note/NotePreview.css';
+@import 'apps/note/AddNode.css';
+@import 'apps/note/NoteFilter.css';
+@import 'apps/note/NoteEdit.css';
 
 /* Email pages and cmps */
 @import 'apps/mail/MailList.css';

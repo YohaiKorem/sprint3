@@ -1,0 +1,11 @@
+.note-filter .search-bar {
+  padding-inline: 12px;
+  background-color: #f1f3f4;
+  border-radius: 8px;
+}
+
+.note-filter input {
+  flex-grow: 1;
+  background-color: #f1f3f4;
+  border: none;
+}
