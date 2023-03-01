@@ -7,7 +7,7 @@ export default {
     <ul class="clean-list flex flex-column">
         <li v-for="mail in mails" :key="mail.id" class="mail-item ">
            
-        <MailPreview class="MailPreview" :mail="mail"/>
+        <MailPreview :mail="mail"/>
         <LongTxt :txt="mail.body"/>
         </li>
     </ul>
