@@ -8,11 +8,12 @@ export default {
   name: 'noteIndex',
   template: `
       <section class="note-index flex flex-column align-center">
-         <h1>Hello Keep</h1>
         <NoteFilter @filter="setFilterBy"/>
         <AddNote @saveNote="onSaveNote"/>
         <NoteList :notes="notes"  v-if="notes" @removeNote="onRemoveNote"/>
-    </section>
+      </section>
+
+      <router-view></router-view>
   `,
 
   data() {
@@ -23,17 +24,10 @@ export default {
   },
 
   methods: {
-    onRemoveNote(noteId) {
-      noteService.remove(noteId)
-        .then(() => {
-          const idx = this.notes.findIndex(note => note.id === noteId)
-          this.notes.splice(idx, 1)
-          showSuccessMsg('Note Removed')
-        })
-        .catch(err => {
-          showErrorMsg('Note remove failed')
-        })
+    toggleModal() {
+      this.showModal = !this.showModal
     },
+
     onSaveNote(newNote) {
       console.log('new note:', newNote)
       noteService.save(newNote)
