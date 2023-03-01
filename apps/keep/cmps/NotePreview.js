@@ -5,10 +5,11 @@ export default {
   props: ['note'],
   template: `
       <article class="note-preview" :style="styleNote">
-            <component 
-            :is="note.type" 
-            :info="note.info"
-             />
+        <component :is="note.type" :info="note.info" />
+        <div class="tool-box flex justify-center">
+          <div class="btn-bg-color" @click="choose-color"></div>
+          <div class="btn-remove" @click="remove"></div>
+        </div>
       </article>
   `,
 
@@ -19,6 +20,13 @@ export default {
       }
     }
   },
+
+  methods: {
+    remove() {
+      this.$emit('removeNote', this.note.id)
+    }
+  },
+
   components: {
     NoteTxt,
   },

@@ -7,11 +7,11 @@ import NoteList from '../cmps/NoteList.js'
 export default {
   name: 'noteIndex',
   template: `
-      <section class="note-index flex flex-column">
+      <section class="note-index flex flex-column align-center">
          <h1>Hello Keep</h1>
         <NoteFilter @filter="setFilterBy"/>
         <AddNote @saveNote="onSaveNote"/>
-        <NoteList :notes="notes"  v-if="notes"/>
+        <NoteList :notes="notes"  v-if="notes" @removeNote="onRemoveNote"/>
     </section>
   `,
 
@@ -21,8 +21,9 @@ export default {
       filterBy: {},
     }
   },
+
   methods: {
-    removeNote(noteId) {
+    onRemoveNote(noteId) {
       noteService.remove(noteId)
         .then(() => {
           const idx = this.notes.findIndex(note => note.id === noteId)
@@ -49,20 +50,23 @@ export default {
       this.filterBy = filterBy
     }
   },
+
   computed: {
     filteredNotes() {
       const regex = new RegExp(this.filterBy.title, 'i')
       return this.notes.filter(note => regex.test(note.title))
     }
   },
+
   created() {
     noteService.query()
       .then(notes => {
         this.notes = notes
       })
-
-
   },
+
+  emits: ['removeNote', 'updateNote'],
+
   components: {
     NoteFilter,
     NoteList,

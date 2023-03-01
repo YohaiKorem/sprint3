@@ -13,23 +13,12 @@
 @import 'cmps/AppHeader.css';
 @import 'cmps/UserMsg.css';
 
-/* Apps */
-@import 'apps/mail/EmailIndex.css';
-@import 'apps/note/NoteIndex.css';
-<<<<<<< HEAD
-@import 'apps/note/NoteList.css';
-@import 'apps/note/note-preview.css';
-=======
-
-
-
-
-
-
-
-
-
 /* Email pages and cmps */
+@import 'apps/mail/EmailList.css';
+@import 'apps/mail/EmailIndex.css';
 
-@import 'apps/mail/EmailList.css'; /* Notes pages and cmps */
->>>>>>> f0f1bfe26d30f8ad51f74eade99af5fb95c86c9e
+/* Notes pages and cmps */
+@import 'apps/note/NoteIndex.css';
+@import 'apps/note/NoteList.css';
+@import 'apps/note/addNode.css';
+@import 'apps/note/note-preview.css';

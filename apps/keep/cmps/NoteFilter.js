@@ -9,11 +9,13 @@ export default {
               type="text" />
       </section>
   `,
+
   data() {
     return {
       filterBy: { title: '' }
     }
   },
+
   methods: {
     filter() {
       this.$emit('filter', this.filterBy)

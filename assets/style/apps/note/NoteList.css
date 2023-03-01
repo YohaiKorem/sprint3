@@ -3,3 +3,7 @@
   break-inside: avoid-column;
   gap: 10px;
 }
+
+.note-list>* {
+  break-inside: avoid-column;
+}
