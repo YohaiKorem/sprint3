@@ -56,7 +56,7 @@ function getEmptyMail(from = '', to = '', subject = '', body = '') {
     removedAt: null,
     from,
     to,
-    labels: ['important', 'funny'],
+    labels: ['important', 'social'],
   }
 }
 

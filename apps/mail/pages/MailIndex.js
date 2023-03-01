@@ -1,5 +1,6 @@
 import { mailService } from '../services/mail.service.js'
 import { utilService } from '../../../services/util.service.js'
+import MailList from '../cmps/MailList.js'
 export default {
   name: 'MailIndex',
   template: `
@@ -7,10 +8,10 @@ export default {
     <h1>Your inbox</h1>
     <button @click="clearStorage">clear</button>
     <RouterLink to="/mail/edit">Send an Email</RouterLink>
-    <!-- <MailFilter @filter="setFilterBy"/>
+    <!-- <MailFilter @filter="setFilterBy"/>-->
     <MailList 
-        :cars="filteredMails" 
-        @remove="removeMail" /> -->
+        :mails="mails" 
+        @remove="removeMail" /> 
         
 </section>
 `,
@@ -24,11 +25,16 @@ export default {
     clearStorage() {
       utilService.clearLocalStorage()
     },
+    removeMail(mailId) {
+      console.log('mail removed')
+    },
   },
   created() {
     mailService.query().then((mails) => {
       this.mails = mails
-      console.log(this.mails)
     })
+  },
+  components: {
+    MailList,
   },
 }
