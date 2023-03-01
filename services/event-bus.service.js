@@ -1,20 +1,20 @@
 'use strict'
 
-function createEventEmitter(defaultHandler = null){
+function createEventEmitter(defaultHandler = null) {
     const listenersMap = {}
 
     return {
-        on(evName, listener){
-            listenersMap[evName] = listenersMap[evName] ? [ ...listenersMap[evName], listener ] : [ listener ]
+        on(evName, listener) {
+            listenersMap[evName] = listenersMap[evName] ? [...listenersMap[evName], listener] : [listener]
             return () => listenersMap[evName] = listenersMap[evName].filter(func => func !== listener)
         },
-        emit(evName, payload){
-            if(listenersMap[evName]) listenersMap[evName].forEach(listener => listener(payload))
-            else if(defaultHandler) defaultHandler()
+        emit(evName, payload) {
+            if (listenersMap[evName]) listenersMap[evName].forEach(listener => listener(payload))
+            else if (defaultHandler) defaultHandler()
         }
     }
 }
-export const eventBus = createEventEmitter(() => console.log('No handler associated with this event...'))
+export const eventBusService = createEventEmitter(() => console.log('No handler associated with this event...'))
 
 // const map = {
 //     'user-msg': [func1, func2],
@@ -23,12 +23,12 @@ export const eventBus = createEventEmitter(() => console.log('No handler associa
 
 
 export function showUserMsg(msg) {
-    eventBus.emit('show-msg', msg)
+    eventBusService.emit('show-msg', msg)
 }
 
 export function showSuccessMsg(txt) {
-    showUserMsg({txt, type: 'success'})
+    showUserMsg({ txt, type: 'success' })
 }
 export function showErrorMsg(txt) {
-    showUserMsg({txt, type: 'error'})
+    showUserMsg({ txt, type: 'error' })
 }

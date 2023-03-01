@@ -1,4 +1,4 @@
-import { eventBus } from '../services/event-bus.service.js'
+import { eventBusService } from '../services/event-bus.service.js'
 
 export default {
 	template: `
@@ -12,7 +12,7 @@ export default {
 		}
 	},
 	created() {
-		eventBus.on('show-msg', this.showMsg)
+		eventBusService.on('show-msg', this.showMsg)
 	},
 	methods: {
 		showMsg(msg) {
