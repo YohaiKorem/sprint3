@@ -11,6 +11,8 @@
   /* Mail */
   --mailclr1: rgb(226, 238, 255);
   --mailclr2: rgb(194, 219, 255);
+  --mailclr3: rgb(247, 202, 77);
+  --mailclr4: rgb(194, 219, 255);
 
   /* Note: */
   --border-color: #e0e0e0;

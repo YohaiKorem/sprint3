@@ -5,10 +5,10 @@ export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article :class="isRead + ' mail-preview'">
+    <article :class="isRead + ' ' + isStarred + ' mail-preview'">
   <div class="btns-container">
     <div @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</div>
-    <div @click="star">★</div>
+    <div @click="star" class="star-icon">★</div>
     <div @click="mail.folder='trash'" class="btn-remove"> <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon"> </div>
   </div>
   <!-- <RouterLink class="mail-preview" :to="'mail/' + mail.id">        </RouterLink> -->

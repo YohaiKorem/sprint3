@@ -6,4 +6,6 @@
 
 .mail-filter input {
   width: 100%;
+  padding: 1.5em;
+  border-radius: 1em;
 }

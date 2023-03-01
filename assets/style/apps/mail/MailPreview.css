@@ -2,7 +2,9 @@
 .mail-preview > :hover {
   cursor: pointer;
 }
-
+.starred .btns-container .star-icon {
+  color: var(--mailclr3);
+}
 .read {
   background-color: var(--mailclr2);
 }
@@ -34,4 +36,7 @@
 }
 .btn-remove .icon {
   max-width: 20px;
+}
+.star-icon {
+  font-size: 1.5em;
 }
