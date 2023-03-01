@@ -1,20 +1,24 @@
 import { noteService } from '../services/note.service.js'
-import { eventBusService } from '../../../services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
+import AddNote from '../cmps/AddNote.js'
 import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 
 export default {
-  name: 'noteIndexCmp',
+  name: 'noteIndex',
   template: `
-      <section class="Note-index">
+      <section class="note-index flex flex-column">
+         <h1>Hello Keep</h1>
         <NoteFilter @filter="setFilterBy"/>
-        <NoteList />
+        <AddNote @saveNote="onSaveNote"/>
+        <NoteList :notes="notes"  v-if="notes"/>
     </section>
-  <h1>Hello Keep</h1>`,
+  `,
 
   data() {
     return {
       notes: null,
+      filterBy: {},
     }
   },
   methods: {
@@ -23,14 +27,23 @@ export default {
         .then(() => {
           const idx = this.notes.findIndex(note => note.id === noteId)
           this.notes.splice(idx, 1)
-          eventBusService.emit('show-msg', { txt: 'Note removed', type: 'success' })
+          showSuccessMsg('Note Removed')
         })
         .catch(err => {
-          eventBusService.emit('show-msg', { txt: 'Note remove failed', type: 'error' })
+          showErrorMsg('Note remove failed')
         })
     },
     onSaveNote(newNote) {
-      this.notes.unshift(newNote)
+      console.log('new note:', newNote)
+      noteService.save(newNote)
+        .then(() => {
+          this.notes.unshift(newNote)
+          showSuccessMsg('Note Added')
+        })
+        .catch(err => {
+          showErrorMsg('Note add failed')
+        })
+
     },
     setFilterBy(filterBy) {
       this.filterBy = filterBy
@@ -44,10 +57,15 @@ export default {
   },
   created() {
     noteService.query()
-      .then(notes => this.notes = notes)
+      .then(notes => {
+        this.notes = notes
+      })
+
+
   },
   components: {
     NoteFilter,
     NoteList,
+    AddNote,
   }
 }

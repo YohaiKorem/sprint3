@@ -1,4 +1,5 @@
 export default {
+  name: 'NoteFilter',
   template: `
       <section class="note-filter">
           <input 
