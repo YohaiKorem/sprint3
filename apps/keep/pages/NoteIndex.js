@@ -1,7 +1,9 @@
 import { noteService } from '../services/note.service.js'
 import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
+import { eventBusService } from '../../../services/event-bus.service.js'
 import AddNote from '../cmps/AddNote.js'
 import NoteFilter from '../cmps/NoteFilter.js'
+import NoteEdit from '../cmps/NoteEdit.js'
 import NoteList from '../cmps/NoteList.js'
 
 export default {
@@ -13,7 +15,7 @@ export default {
         <NoteList :notes="notes"  v-if="notes" @removeNote="onRemoveNote"/>
       </section>
 
-      <router-view></router-view>
+      <router-view @calll=""></router-view>
   `,
 
   data() {
@@ -24,6 +26,9 @@ export default {
   },
 
   methods: {
+    calll() {
+      console.log('IM the parent')
+    },
     onRemoveNote(noteId) {
       noteService.remove(noteId)
         .then(() => {
@@ -45,10 +50,23 @@ export default {
         .catch(err => {
           showErrorMsg('Note add failed')
         })
-
     },
     setFilterBy(filterBy) {
       this.filterBy = filterBy
+    },
+    updateNote(note) {
+      console.log('hi')
+      noteService.save(note)
+        .then(() => {
+          noteService.query()
+            .then(notes => {
+              this.notes = notes
+            })
+          showSuccessMsg('Note Added')
+        })
+        .catch(err => {
+          showErrorMsg('Note add failed')
+        })
     }
   },
 
@@ -64,6 +82,9 @@ export default {
       .then(notes => {
         this.notes = notes
       })
+
+    eventBusService.on('updateNote', this.updateNote)
+    eventBusService.on('removeNote', this.onRemoveNote)
   },
 
   emits: ['removeNote', 'updateNote'],
@@ -72,5 +93,6 @@ export default {
     NoteFilter,
     NoteList,
     AddNote,
+    NoteEdit,
   }
 }

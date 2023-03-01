@@ -12,7 +12,7 @@ const demoNotes = [
       backgroundColor: '#FFF475'
     },
     info: {
-      title: 'Yohai hagever',
+      title: 'Yohai hamelech',
       txt: 'Fullstack Me Baby!'
     }
   },
