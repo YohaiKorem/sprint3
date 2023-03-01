@@ -6,8 +6,7 @@ export default {
             v-model="criteria.txt"
             placeholder="Search"
             type="text" />
-       <button @click="criteria.isTrash=true">Trash Folder</button>
-    </section>
+       </section>
 `,
   data() {
     return {

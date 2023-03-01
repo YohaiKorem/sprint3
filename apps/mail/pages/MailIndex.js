@@ -13,7 +13,10 @@ export default {
     <h1>Your inbox</h1>
     <button @click="test">test</button>
     <button @click="clearStorage">clear</button>
-    <RouterLink to="/mail/edit">Send an Email</RouterLink>
+
+    <RouterLink to="/mail/edit">Send an Email</RouterLink> |
+    <RouterLink to="/mail/trash">Trash folder</RouterLink> |
+    <RouterLink to="/mail/spam">Spam folder</RouterLink>
     <MailFilter @filter="setCriteria"/>
     <MailList 
         :mails="filteredMails" 
@@ -50,7 +53,6 @@ export default {
     },
     setCriteria(criteria) {
       this.criteria = criteria
-      console.log(this.criteria)
     },
     test() {
       console.log(this.mails)
@@ -58,14 +60,18 @@ export default {
   },
   computed: {
     filteredMails() {
-      if (this.criteria.isTrash) {
-        return this.mails.filter((mail) => mail.folder === 'trash')
-      }
+      //   return mailService.query().then((mails) => console.log(mails))
 
+      //   if (this.criteria.isTrash) {
+      //     return this.mails.filter((mail) => mail.folder === 'trash')
+      //   } else if (this.criteria.isTrash === false) {
+      //     return this.mails.filter((mail) => mail.folder !== 'trash')
+      //   } else return this.mails
+      //   else if (this.criteria.txt) {
+      //   }
       const regex = new RegExp(this.criteria.txt, 'i')
 
       return this.mails.filter((mail) => regex.test(mail.body))
-      //   mailService.query(this.criteria).then((mails) => console.log(mails))
     },
   },
 

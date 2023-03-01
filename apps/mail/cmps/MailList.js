@@ -5,7 +5,7 @@ export default {
   props: ['mails'],
   template: `<section class="mail-list">
     <ul class="clean-list">
-        <li v-for="mail in mails" :key="mail.id">
+        <li v-for="mail in mails" :key="mail.id" class="mail-item">
             <button @click="mail.folder='trash'">Move to trash</button>
         <MailPreview :mail="mail"/>
         <LongTxt :txt="mail.body"/>

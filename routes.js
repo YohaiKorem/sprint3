@@ -6,7 +6,11 @@ import NoteDetails from './apps/keep/pages/NoteDetails.js'
 
 // MAIL
 import MailIndex from './apps/mail/pages/MailIndex.js'
-import MailDetails from './apps/mail/pages/MailDetails.js'
+import MailEdit from './apps/mail/pages/MailEdit.js'
+import MailDetails from './apps/mail/cmps/MailDetails.js'
+import TrashPreview from './apps/mail/cmps/TrashPreview.js'
+import SpamPreview from './apps/mail/cmps/SpamPreview.js'
+
 const { createRouter, createWebHashHistory } = VueRouter
 
 const routerOptions = {
@@ -36,7 +40,19 @@ const routerOptions = {
     },
     {
       path: '/mail/:mailId',
-      component: MailDetails,
+      component: MailEdit,
+    },
+    {
+      path: '/mail/edit/:mailId?',
+      component: MailEdit,
+    },
+    {
+      path: '/mail/trash',
+      component: TrashPreview,
+    },
+    {
+      path: '/mail/spam',
+      component: SpamPreview,
     },
   ],
 }
