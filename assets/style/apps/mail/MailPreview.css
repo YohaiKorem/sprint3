@@ -2,3 +2,16 @@
 .mail-preview > :hover {
   cursor: pointer;
 }
+
+.read {
+  background-color: var(--mailclr2);
+}
+.unread {
+  background-color: var(--mailclr1);
+}
+
+.mail-preview {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

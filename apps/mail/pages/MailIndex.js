@@ -10,14 +10,21 @@ export default {
   name: 'MailIndex',
   template: `
 <section class="mail-index">
-    <h1>Your inbox</h1>
-    <button @click="test">test</button>
-    <button @click="clearStorage">clear</button>
+  <div class="input-heading-container full">
+<div class="btns-container">
 
-    <RouterLink to="/mail/edit">Send an Email</RouterLink> |
-    <RouterLink to="/mail/trash">Trash folder</RouterLink> |
-    <RouterLink to="/mail/spam">Spam folder</RouterLink>
+  <h1>Your inbox</h1>
+  <button @click="test">test</button>
+  <button @click="clearStorage">clear</button>
+</div>
+    <nav class="mail-nav flex ">
+      
+      <RouterLink to="/mail/edit">Send an Email</RouterLink> |
+      <RouterLink to="/mail/trash">Trash folder</RouterLink> |
+      <RouterLink to="/mail/spam">Spam folder</RouterLink>
+    </nav>
     <MailFilter @filter="setCriteria"/>
+  </div>
     <MailList 
         :mails="filteredMails" 
         @remove="removeMail" /> 

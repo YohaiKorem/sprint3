@@ -1,15 +1,23 @@
 .mail-list ul {
-  display: grid;
-  gap: 10px;
+  width: 100%;
   padding: 10px;
-  background-color: lightblue;
   list-style-type: none;
-}
-.mail-list ul li {
-  padding: 10px;
-  background-color: darkseagreen;
+  background-color: var(--mailclr1);
+  border-radius: 3%;
 }
 
 .mail-item {
   cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  padding: 10px;
+  border-bottom: 0.5px solid black;
+  cursor: pointer;
+}
+
+.mail-item .btns-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

@@ -22,5 +22,5 @@
 
 /* Email pages and cmps */
 @import 'apps/mail/MailList.css';
-/* @import 'apps/mail/MailIndex.css'; */
+@import 'apps/mail/MailIndex.css';
 @import 'apps/mail/MailPreview.css';
