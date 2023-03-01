@@ -1,20 +1,23 @@
 import NotePreview from './NotePreview.js'
 
+
 export default {
+  name: 'NodeList',
   props: ['notes'],
   template: `
         <section class="note-list">
-            <ul>
-                <li v-for="note in notes" :key="note.id">
-                    <component :is="cmp.type" :info="cmp.info" @changeInfo="updateNote" />
-                    <button class="btn-remove" @click="remove(note.id)">🗑</button>
-                </li>
-            </ul>
+          <div v-for="note in notes" :key="note.id">
+            <NotePreview :note="note" />
+          </div>
         </section>
     `,
   methods: {
     remove(noteId) {
       this.$emit('remove', noteId)
+    },
+
+    updateInfo(noteId) {
+      this.$emit('updateNote', noteId)
     },
   },
   components: {

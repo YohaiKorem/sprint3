@@ -9,7 +9,7 @@ const demoNotes = [
     type: 'NoteTxt',
     isPinned: true,
     style: {
-      backgroundColor: '#00d'
+      backgroundColor: '#FFF475'
     },
     info: {
       txt: 'Fullstack Me Baby!'
@@ -17,25 +17,38 @@ const demoNotes = [
   },
   {
     id: 'n102',
-    type: 'NoteImg',
-    isPinned: false,
-    info: {
-      url: 'http://some-img/me',
-      title: 'Bobi and Me'
-    },
+    createdAt: 1112222,
+    type: 'NoteTxt',
+    isPinned: true,
     style: {
-      backgroundColor: '#00d'
+      backgroundColor: '#CCFF90'
+    },
+    info: {
+      txt: 'wowww'
     }
   },
-  {
-    id: 'n103',
-    type: 'NoteTodos',
-    isPinned: false,
-    info: {
-      title: 'Get my stuff together',
-      todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }]
-    }
-  }]
+  // {
+  //   id: 'n102',
+  //   type: 'NoteImg',
+  //   isPinned: false,
+  //   info: {
+  //     url: 'http://some-img/me',
+  //     title: 'Bobi and Me'
+  //   },
+  //   style: {
+  //     backgroundColor: '#FFF475'
+  //   }
+  // },
+  // {
+  //   id: 'n103',
+  //   type: 'NoteTodos',
+  //   isPinned: false,
+  //   info: {
+  //     title: 'Get my stuff together',
+  //     todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }]
+  //   }
+  // }
+]
 
 _createNotes()
 
@@ -77,14 +90,13 @@ function save(note) {
   }
 }
 
-function getEmptyNote(info = { txt: 'Fullstack Me Baby!' }, type = 'NoteTxt') {
+function getEmptyNote(info = { txt: '' }, type = 'NoteTxt') {
   return {
-    id: utilService.makeId(6),
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: false,
     style: {
-      backgroundColor: '#ff0'
+      backgroundColor: '#FFF475'
     },
     info,
   }
