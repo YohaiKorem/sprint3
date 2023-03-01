@@ -17,7 +17,7 @@ export default {
     <MailFilter @filter="setCriteria"/>
     <MailList 
         :mails="filteredMails" 
-        @remove="removeMail" @moveToTrash="moveToTrash"/> 
+        @remove="removeMail" /> 
         
 </section>
 `,
@@ -36,25 +36,25 @@ export default {
     clearStorage() {
       utilService.clearLocalStorage()
     },
-  },
-  removeMail(mailId) {
-    mailService
-      .remove(mailId)
-      .then(() => {
-        const idx = this.mails.findIndex((mail) => mail.id === mailId)
-        this.mails.splice(idx, 1)
-        showSuccessMsg('Mail removed')
-      })
-      .catch((err) => {
-        showErrorMsg('failed to remove mail')
-      })
-  },
-  setCriteria(criteria) {
-    this.criteria = criteria
-    console.log(this.criteria)
-  },
-  test() {
-    console.log(this.mails)
+    removeMail(mailId) {
+      mailService
+        .remove(mailId)
+        .then(() => {
+          const idx = this.mails.findIndex((mail) => mail.id === mailId)
+          this.mails.splice(idx, 1)
+          showSuccessMsg('Mail removed')
+        })
+        .catch((err) => {
+          showErrorMsg('failed to remove mail')
+        })
+    },
+    setCriteria(criteria) {
+      this.criteria = criteria
+      console.log(this.criteria)
+    },
+    test() {
+      console.log(this.mails)
+    },
   },
   computed: {
     filteredMails() {
