@@ -11,11 +11,13 @@
 }
 
 .note-preview .note-title {
+  text-align: left;
   font-size: 1rem;
   padding: .5em;
 }
 
 .note-preview .note-txt {
+  text-align: left;
   font-size: 1.125rem;
   padding: .5em;
 }

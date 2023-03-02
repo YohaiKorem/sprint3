@@ -39,7 +39,7 @@ export default {
     },
     onSaveNote(newNote) {
       console.log('new note:', newNote)
-      noteService.save(newNote, false)
+      noteService.save(newNote)
         .then(() => {
           this.notes.unshift(newNote)
           showSuccessMsg('Note Added')

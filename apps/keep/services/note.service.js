@@ -98,7 +98,7 @@ function remove(noteId) {
   return storageService.remove(NOTE_KEY, noteId)
 }
 
-function save(note, append = true) {
+function save(note, append = false) {
   if (note.id) {
     return storageService.put(NOTE_KEY, note)
   } else {
