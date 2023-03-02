@@ -44,12 +44,12 @@ function remove(mailId) {
   return storageService.remove(MAIL_KEY, mailId)
 }
 
-function save(mail) {
+function save(mail, append = false) {
   console.log(mail)
   if (mail.id) {
     return storageService.put(MAIL_KEY, mail)
   } else {
-    return storageService.post(MAIL_KEY, mail)
+    return storageService.post(MAIL_KEY, mail, append)
   }
 }
 
@@ -77,21 +77,21 @@ function _createMails() {
     mails = []
     mails.push(_createMail('me', 'you', 'a subject', 'the mail content'))
     mails.push(_createMail('yohai', 'noa'))
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
-    // mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
+    mails.push(_createMail())
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
