@@ -19,14 +19,14 @@ const demoNotes = [
   {
     id: 'n102',
     createdAt: Date.now(),
-    type: 'NoteTxt',
+    type: 'NoteTodo',
     isPinned: true,
     style: {
       backgroundColor: '#CCFF90'
     },
     info: {
       title: 'Yohai hagever',
-      txt: 'wowww'
+      list: [{ txt: 'eat', isDone: false }, { txt: 'code', isDone: false }]
     }
   },
   {

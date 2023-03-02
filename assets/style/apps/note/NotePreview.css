@@ -16,8 +16,12 @@
   padding: .5em;
 }
 
-.note-preview .note-txt {
+.note-preview .note {
   text-align: left;
+
+}
+
+.note-preview .note-txt {
   font-size: 1.125rem;
   padding: .5em;
 }

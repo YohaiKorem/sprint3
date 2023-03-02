@@ -2,6 +2,7 @@ import { eventBusService } from '../../../services/event-bus.service.js'
 import NoteTools from './NoteTools.js'
 import NoteTxt from './NoteTxt.js'
 import NoteImg from './NoteImg.js'
+import NoteTodo from './NoteTodo.js'
 
 export default {
   name: 'NotePreview',
@@ -43,6 +44,7 @@ export default {
     NoteTools,
     NoteTxt,
     NoteImg,
+    NoteTodo,
   },
 
   emits: ['removeNote']

@@ -9,6 +9,11 @@ export default {
         <div class="modal" :style="styleNote">
           <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
           <div class="editable-div" ref="title" contenteditable="true" @input="changeTitle">{{note.info.title}}</div>
+          <ul ref="list" v-if="note.info.list">
+            <li v-for="item in note.info.list" contenteditable="true" class="flex align-center justify-between" @input="chngeList">{{item.txt}}
+              <button class="clean-btn">done</button>
+            </li>
+          </ul>
           <div class="editable-div" ref="txt" contenteditable="true" @input="changeTxt">{{note.info.txt}}</div>
           <div class="tool-bar flex align-center justify-between">
             <NoteTools :note="note" v-if="note" @remove="removeNote" />
@@ -36,6 +41,11 @@ export default {
 
     changeTitle() {
       this.note.info.title = this.$refs.title.innerText
+      eventBusService.emit('updateNote', this.note)
+    },
+
+    chngeList() {
+      this.note.info.list = this.$refs.list.innerText
       eventBusService.emit('updateNote', this.note)
     },
 
