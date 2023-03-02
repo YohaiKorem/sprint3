@@ -7,9 +7,4 @@
   border: 1px solid var(--border-color);
 }
 
-@media(max-width: 720px) {
-  .app-header {
-    background-color: var(--clr3);
-    color: var(--secondary-clr2);
-  }
-}
+@media(max-width: 768px) {}
