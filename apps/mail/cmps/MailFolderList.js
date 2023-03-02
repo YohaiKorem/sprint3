@@ -1,7 +1,6 @@
 export default {
   name: 'MailFolderList',
   template: `
-      <button @click="sendMail" class="compose-mail">Send an Email</button> 
       <ul class="clean-list folder-list">
         <li @click="setTrash">Trash</li> 
         <li @click="setSent">Sent</li> 

@@ -37,17 +37,24 @@
 }
 
 .mail-from {
-  justify-self: center;
+  justify-self: start;
   font-size: 1em;
   align-self: center;
 }
-.long-txt {
+
+.mail-body {
   grid-column: 3;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .mail-timestamp {
   grid-column: 4;
   justify-self: end;
 }
+.icon,
 .btn-remove .icon {
   max-width: 20px;
 }

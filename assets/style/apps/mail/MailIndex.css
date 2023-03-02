@@ -3,7 +3,8 @@
   /* place-items: center; */
   grid-template-rows: 3em 1fr;
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
-  row-gap: 20px;
+  row-gap: 1.25em;
+  column-gap: 1.25em;
   background-image: url(/assets/img/mailImg/bgcImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,6 +32,24 @@
   padding-block: 1em;
 }
 
+.mail-index button.compose-mail {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1em;
+  align-items: center;
+  grid-column: 2;
+  grid-row: 2;
+  border-radius: 1em;
+  text-align: center;
+  padding: 1em;
+  justify-self: start;
+  width: 50%;
+  background-color: #fff;
+}
+.mail-index button.compose-mail img {
+  padding: 0;
+  margin: 0;
+}
 .btns-container {
   grid-column: 1;
 }
