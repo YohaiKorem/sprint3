@@ -65,21 +65,23 @@ export default {
         .save(this.mail)
         .then((savedMail) => {
           showSuccessMsg('eMail Sent')
-          this.closeMail()
+          this.$router.push('/mail')
         })
         .catch((err) => {
           showErrorMsg('Failed to send Email')
+          this.closeMail()
         })
     },
     saveDraft() {
       this.mail.from = mailService.loggedinUser.email
-      this.mail.folder = 'draft'
+      this.mail.folder = 'drafts'
       mailService.save(this.mail)
     },
     loadMail() {
       mailService.get(this.mailId).then((mail) => (this.mail = mail))
     },
     closeMail() {
+      this.saveDraft()
       eventBusService.emit('renderInboxFromOtherCmp', this.mail)
       this.$router.push('/mail')
     },

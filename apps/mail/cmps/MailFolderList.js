@@ -1,33 +1,44 @@
+import { eventBusService } from '../../../services/event-bus.service.js'
+import { mailService } from '../services/mail.service.js'
+
 export default {
   name: 'MailFolderList',
   template: `
       <ul class="clean-list folder-list">
-        <li @click="setTrash">Trash</li> 
-        <li @click="setSent">Sent</li> 
-        <li @click="setImportant">Important</li> 
-        <li @click="setSpam">Spam</li>
-        <li @click="setDrafts">Drafts</li>
-        <li @click="setStarred">Starred</li>
+        <li @click="setFolder('inbox')">Inbox</li>
+        <li @click="setFolder('trash')">Trash</li> 
+        <li @click="setFolder('sent')">Sent</li> 
+        <li @click="setFolder('important')">Important</li> 
+        <li @click="setFolder('spam')">Spam</li>
+        <li @click="setFolder('drafts')">Drafts</li>
+        <li @click="setFolder('starred')">Starred</li>
       </ul>
     `,
+  data() {
+    return {
+      mails: [],
+    }
+  },
   methods: {
-    setTrash() {
-      console.log('trash')
+    setFolder(folder) {
+      let folderMails = this.mails.filter((mail) => {
+        return mail.folder === folder
+      })
+
+      this.$emit('setFolder', folderMails)
     },
-    setSpam() {
-      console.log('spam')
-    },
-    setSent() {
-      console.log('sent')
-    },
-    setImportant() {
-      console.log('important')
-    },
-    setDrafts() {
-      console.log('draft')
-    },
-    setStarred() {
-      console.log('star')
-    },
+  },
+  created() {
+    mailService.query().then((mails) => {
+      this.mails = mails
+    })
+    eventBusService.on('folderChange', () => {
+      mailService.query().then((mails) => {
+        this.mails = mails
+      })
+    })
+  },
+  mounted() {
+    this.setFolder('inbox')
   },
 }
