@@ -28,7 +28,7 @@ export default {
 </div>
 </div>
 <aside class="folder-list-container">
-  <MailFolderList/>
+  <MailFolderList @setFolder="setFolder"/>
 </aside>
     <MailFilter @filter="setCriteria"/>
     <MailList 
@@ -70,6 +70,9 @@ export default {
     },
     sendMail() {
       console.log('mail sent')
+    },
+    setFolder(mails) {
+      this.mails = mails
     },
     setCriteria(criteria) {
       this.criteria = criteria

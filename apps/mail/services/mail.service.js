@@ -18,7 +18,6 @@ export const mailService = {
 }
 
 function query(criteria = {}) {
-  console.log(criteria)
   return storageService.query(MAIL_KEY).then((mails) => {
     // if (criteria.txt) {
     //   console.log(criteria)

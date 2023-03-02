@@ -46,9 +46,12 @@ export default {
       this.$emit('selectMail', isSelected)
     },
     removeMail() {
-      mailService.remove(this.mail.id).then((mails) => {
-        eventBusService.emit('renderInboxFromOtherCmp', this.mail)
-      })
+      this.mail.folder = 'trash'
+      mailService.save(this.mail)
+      eventBusService.emit('folderChange', this.mail)
+      // mailService.remove(this.mail.id).then((mails) => {
+      //   eventBusService.emit('renderInboxFromOtherCmp', this.mail)
+      // })
     },
   },
   computed: {
