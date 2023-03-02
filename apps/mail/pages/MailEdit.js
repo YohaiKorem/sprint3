@@ -1,3 +1,7 @@
+import {
+  showErrorMsg,
+  showSuccessMsg,
+} from '../../../services/event-bus.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../services/mail.service.js'
 export default {
@@ -11,19 +15,20 @@ export default {
 
     <div class="icon">_</div>
     <div class="icon">↕</div>
-    <div class="icon">X</div>
+    <div @click="closeMail" class="icon close-mail">X</div>
   </div>
 </header>
-<form class="mail-form">
+<form @submit.prevent="send" class="mail-form">
   <div class="mail-to-container">
     <!-- <label for="mail-to-input">To</label> -->
-    <input type="text" name="mail-to-input" placeholder="Recipients">
+    <input v-model="this.mail.to" type="text" name="mail-to-input" placeholder="Recipients">
   </div>
   <div class="mail-subject-container">
     <!-- <label for="mail-subject-input"></label> -->
-    <input type="text" name="mail-subject-input" placeholder="Subject">
+    <input v-model="this.mail.subject" type="text" name="mail-subject-input" placeholder="Subject">
   </div>
-  <textarea name="mail-body"  cols="30" rows="10"></textarea>
+  <textarea v-model="this.mail.body" name="mail-body"  cols="30" rows="10"></textarea>
+<button class="send-mail-btn">Send</button>
 </form>    
   </section>
 
@@ -31,6 +36,7 @@ export default {
   data() {
     return {
       mail: {},
+      saveInterval: setInterval(this.saveDraft, 3000),
     }
   },
   created() {
@@ -50,11 +56,33 @@ export default {
     },
   },
   methods: {
-    test() {
-      console.log(this.mail)
+    send() {
+      this.mail.from = mailService.loggedinUser.email
+      this.mail.folder = 'sent'
+      this.mail.sentAt = Date.now()
+      mailService
+        .save(this.mail)
+        .then((savedMail) => {
+          showSuccessMsg('eMail Sent')
+          this.$router.push('/mail')
+        })
+        .catch((err) => {
+          showErrorMsg('Failed to send Email')
+        })
+    },
+    saveDraft() {
+      this.mail.from = mailService.loggedinUser.email
+      this.mail.folder = 'draft'
+      mailService.save(this.mail)
     },
     loadMail() {
       mailService.get(this.mailId).then((mail) => (this.mail = mail))
     },
+    closeMail() {
+      this.$router.push('/mail')
+    },
+  },
+  unmounted() {
+    clearInterval(this.saveInterval)
   },
 }
