@@ -7,11 +7,10 @@
 
 .mail-list ul {
   align-self: center;
-  /* width: 100%; */
-  /* padding: 10px; */
+
+  border-radius: 3%;
   list-style-type: none;
   background-color: var(--mailclr1);
-  border-radius: 3%;
   grid-row: 2;
 }
 
