@@ -1,16 +1,24 @@
 import { mailService } from '../services/mail.service.js'
 import LongTxt from '../../../cmps/LongTxt.js'
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article :class="isRead + ' ' + isSelected + ' ' + isStarred + ' mail-preview'">
+    <article :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
   <div class="btns-container">
     <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
     <!-- <div @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</div> -->
-    <div @click="star" class="star-icon">★</div>
-    <div @click="mail.folder='trash'" class="btn-remove"> <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon"> </div>
+    <div @click="star" class="star-icon icon">★</div>
+    <div @click="important" class="important-icon-container" ><img class="important-icon icon" src="assets/img/mailImg/icons/importantArrow.png">
+</div>
+
+    <div @click="removeMail"
+     class="btn-remove"> 
+     <img src="assets/img/mailImg/icons/trash.png" 
+     class="icon trash-icon">
+     </div>
   </div>
   <!-- <RouterLink class="mail-preview" :to="'mail/' + mail.id">        </RouterLink> -->
 
@@ -31,8 +39,16 @@ export default {
       this.mail.isStarred = !this.mail.isStarred
       mailService.save(this.mail)
     },
+    important() {
+      this.mail.isImportant = !this.mail.isImportant
+    },
     selectMail(isSelected) {
       this.$emit('selectMail', isSelected)
+    },
+    removeMail() {
+      mailService.remove(this.mail.id).then((mails) => {
+        eventBusService.emit('renderInboxFromOtherCmp', this.mail)
+      })
     },
   },
   computed: {
@@ -46,6 +62,10 @@ export default {
     },
     isSelected() {
       if (this.mail.isSelected) return 'selected'
+      else return ''
+    },
+    isImportant() {
+      if (this.mail.isImportant) return 'important'
       else return ''
     },
   },

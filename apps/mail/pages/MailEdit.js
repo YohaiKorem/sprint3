@@ -1,4 +1,5 @@
 import {
+  eventBusService,
   showErrorMsg,
   showSuccessMsg,
 } from '../../../services/event-bus.service.js'
@@ -64,7 +65,7 @@ export default {
         .save(this.mail)
         .then((savedMail) => {
           showSuccessMsg('eMail Sent')
-          this.$router.push('/mail')
+          this.closeMail()
         })
         .catch((err) => {
           showErrorMsg('Failed to send Email')
@@ -79,6 +80,7 @@ export default {
       mailService.get(this.mailId).then((mail) => (this.mail = mail))
     },
     closeMail() {
+      eventBusService.emit('renderInboxFromOtherCmp', this.mail)
       this.$router.push('/mail')
     },
   },

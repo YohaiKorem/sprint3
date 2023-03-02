@@ -15,7 +15,9 @@
 .selected {
   background-color: var(--mailclr4);
 }
-
+.important .btns-container .important-icon {
+  background-color: var(--mailclr3);
+}
 .btns-container {
   display: flex;
   justify-content: space-around;

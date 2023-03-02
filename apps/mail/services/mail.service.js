@@ -40,6 +40,7 @@ function get(mailId) {
 }
 
 function remove(mailId) {
+  console.log(mailId)
   return storageService.remove(MAIL_KEY, mailId)
 }
 
@@ -60,6 +61,7 @@ function getEmptyMail(from = '', to = '', subject = '', body = '') {
     isSelected: false,
     isRead: false,
     isStarred: false,
+    isImportant: false,
     folder: 'inbox',
     sentAt: null,
     removedAt: null,
@@ -75,21 +77,21 @@ function _createMails() {
     mails = []
     mails.push(_createMail('me', 'you', 'a subject', 'the mail content'))
     mails.push(_createMail('yohai', 'noa'))
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
+    // mails.push(_createMail())
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }

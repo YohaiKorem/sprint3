@@ -2,6 +2,7 @@
   justify-self: center;
   overflow-y: scroll;
   max-height: 500px;
+  grid-column: 3/5;
 }
 
 .mail-list ul {

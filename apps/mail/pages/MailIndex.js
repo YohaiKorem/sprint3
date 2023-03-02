@@ -4,6 +4,7 @@ import MailList from '../cmps/MailList.js'
 import MailFilter from '../cmps/MailFilter.js'
 import MailFolderList from '../cmps/MailFolderList.js'
 import {
+  eventBusService,
   showErrorMsg,
   showSuccessMsg,
 } from '../../../services/event-bus.service.js'
@@ -46,6 +47,9 @@ export default {
   created() {
     mailService.query().then((mails) => {
       this.mails = mails
+    })
+    eventBusService.on('renderInboxFromOtherCmp', (mail) => {
+      mailService.query().then((mails) => (this.mails = mails))
     })
   },
   methods: {
