@@ -32,23 +32,25 @@ export default {
   methods: {
     markAsRead() {
       this.mail.isRead = !this.mail.isRead
-      mailService.save(this.mail)
+      eventBusService.emit('update', this.mail)
       this.$emit('readUnread', this.mail.isRead)
     },
     star() {
       this.mail.isStarred = !this.mail.isStarred
-      mailService.save(this.mail)
+      eventBusService.emit('update', this.mail)
     },
     important() {
       this.mail.isImportant = !this.mail.isImportant
+      eventBusService.emit('update', this.mail)
     },
     selectMail(isSelected) {
       this.$emit('selectMail', isSelected)
+      eventBusService.emit('update', this.mail)
     },
     removeMail() {
       this.mail.folder = 'trash'
-      mailService.save(this.mail)
-      eventBusService.emit('folderChange', this.mail)
+      eventBusService.emit('update', this.mail)
+
       // mailService.remove(this.mail.id).then((mails) => {
       //   eventBusService.emit('renderInboxFromOtherCmp', this.mail)
       // })

@@ -17,19 +17,11 @@ export const mailService = {
   getEmptyMail,
 }
 
-function query(criteria = {}) {
+function query(folder = 'inbox') {
   return storageService.query(MAIL_KEY).then((mails) => {
-    // if (criteria.txt) {
-    //   console.log(criteria)
-    //   const regex = new RegExp(criteria.txt, 'i')
-    //   mails = mails.filter((mail) => regex.test(mail.body))
-    // }
-    // if (criteria.isTrash) {
-    //   mails.filter((mail) => (mail.isTrash = true))
-    // }
-    // if (filterBy.minSpeed) {
-    //     mails = mails.filter(mail => mail.maxSpeed >= filterBy.minSpeed)
-    // }
+    mails = mails.filter((mail) => {
+      return mail.folder === folder
+    })
     return mails
   })
 }
@@ -39,12 +31,10 @@ function get(mailId) {
 }
 
 function remove(mailId) {
-  console.log(mailId)
   return storageService.remove(MAIL_KEY, mailId)
 }
 
 function save(mail, append = false) {
-  console.log(mail)
   if (mail.id) {
     return storageService.put(MAIL_KEY, mail)
   } else {

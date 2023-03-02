@@ -13,7 +13,7 @@ export default {
   template: `
 <section class="mail-index">
   <RouterLink :to="'/mail/edit' ">
-  <button @click="sendMail" 
+  <button  
   class="compose-mail">
    <img class="icon pencil-icon" src="assets/img/mailImg/icons/icons8-pencil-48.png">
    Compose</button>  
@@ -31,9 +31,8 @@ export default {
   <MailFolderList @setFolder="setFolder"/>
 </aside>
     <MailFilter @filter="setCriteria"/>
-    <MailList 
-        :mails="filteredMails" 
-        @remove="removeMail" /> 
+    <button @click="removeForEver" class="btn-delete-forever">delete forever</button>
+    <MailList :mails="filteredMails"/> 
         
       </section>
       <router-view />
@@ -42,14 +41,18 @@ export default {
     return {
       mails: [],
       criteria: {},
+      folder: 'inbox',
     }
   },
   created() {
     mailService.query().then((mails) => {
       this.mails = mails
     })
-    eventBusService.on('renderInboxFromOtherCmp', (mail) => {
-      mailService.query().then((mails) => (this.mails = mails))
+    eventBusService.on('update', (mail) => {
+      // console.log(this.folder)
+      mailService.save(mail).then(() => {
+        mailService.query().then((mails) => (this.mails = mails))
+      })
     })
   },
   methods: {
@@ -62,17 +65,33 @@ export default {
         .then(() => {
           const idx = this.mails.findIndex((mail) => mail.id === mailId)
           this.mails.splice(idx, 1)
+
           showSuccessMsg('Mail removed')
         })
         .catch((err) => {
           showErrorMsg('failed to remove mail')
         })
     },
-    sendMail() {
-      console.log('mail sent')
+    removeForEver() {
+      let selectedMails = this.mails.filter((mail) => mail.isSelected)
+      selectedMails.forEach((selectedMail) => {
+        mailService.remove(selectedMail.id).then(() => {
+          const idx = this.mails.findIndex(
+            (mail) => mail.id === selectedMail.id
+          )
+          this.mails.splice(idx, 1)
+        })
+        // let res = selectedMails.map((selectedMail) => {
+        //   return this.mails.findIndex((mail) => mail.id === selectedMail.id)
+        // })
+        // console.log(res)
+      })
     },
-    setFolder(mails) {
-      this.mails = mails
+    setFolder(folder) {
+      this.folder = folder
+      mailService.query(this.folder).then((mails) => {
+        this.mails = mails
+      })
     },
     setCriteria(criteria) {
       this.criteria = criteria
@@ -83,15 +102,9 @@ export default {
   },
   computed: {
     filteredMails() {
-      //   return mailService.query().then((mails) => console.log(mails))
-
-      //   if (this.criteria.isTrash) {
-      //     return this.mails.filter((mail) => mail.folder === 'trash')
-      //   } else if (this.criteria.isTrash === false) {
-      //     return this.mails.filter((mail) => mail.folder !== 'trash')
-      //   } else return this.mails
-      //   else if (this.criteria.txt) {
-      //   }
+      this.mails = this.mails.filter((mail) => {
+        return mail.folder === this.folder
+      })
       const regex = new RegExp(this.criteria.txt, 'i')
 
       return this.mails.filter((mail) => regex.test(mail.body))

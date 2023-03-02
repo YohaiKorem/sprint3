@@ -4,6 +4,7 @@ import { mailService } from '../services/mail.service.js'
 export default {
   name: 'MailFolderList',
   template: `
+  <h1>{{folder}}</h1>
       <ul class="clean-list folder-list">
         <li @click="setFolder('inbox')">Inbox</li>
         <li @click="setFolder('trash')">Trash</li> 
@@ -16,29 +17,16 @@ export default {
     `,
   data() {
     return {
-      mails: [],
+      folder: '',
     }
   },
   methods: {
     setFolder(folder) {
-      let folderMails = this.mails.filter((mail) => {
-        return mail.folder === folder
-      })
-
-      this.$emit('setFolder', folderMails)
+      this.folder = folder
+      this.$emit('setFolder', folder)
     },
   },
-  created() {
-    mailService.query().then((mails) => {
-      this.mails = mails
-    })
-    eventBusService.on('folderChange', () => {
-      mailService.query().then((mails) => {
-        this.mails = mails
-      })
-    })
-  },
-  mounted() {
-    this.setFolder('inbox')
-  },
+  // created() {
+  //   this.setFolder('inbox')
+  // },
 }
