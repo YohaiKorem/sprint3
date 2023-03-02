@@ -9,7 +9,7 @@ export default {
           <input type="text" v-model="note.info.txt" placeholder="Take a note..." v-show="type === 'NoteTxt'" @focus="onFocus" />
           <input type="text" v-model="note.info.imgUrl" placeholder="Enter image URL..." v-show="type === 'NoteImg'" @focus="onFocus" />
           <input type="text" v-model="note.info.videoUrl" placeholder="Enter video URL..." v-show="type === 'NoteVideo'" @focus="onFocus" />
-          <input type="text" @input="saveTodoList" placeholder="Enter comma seperated list..." v-show="type === 'NoteTodo'" @focus="onFocus" />
+          <input type="text" ref="todos" @input="saveTodoList" placeholder="Enter comma seperated list..." v-show="type === 'NoteTodo'" @focus="onFocus" />
         </form>
         <div class="types-wrapper flex justify-evenly" v-show="!isWideMode">
           <img class="item btn-text" @click="changeType('NoteTxt')" src="../../../assets/img/keep/text.svg" />
@@ -47,6 +47,7 @@ export default {
     save() {
       this.$emit('saveNote', this.note)
       this.note = noteService.getEmptyNote()
+      this.$refs.todos.value = ''
     },
 
     updateImgUrl(ev) {

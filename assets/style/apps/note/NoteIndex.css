@@ -1,6 +1,42 @@
 .note-index {
+  display: grid;
+  grid-template-columns: 40px minmax(200px 1fr) 40px;
+  justify-items: center;
   gap: 20px;
-  max-width: 900px;
+  grid-auto-flow: dense;
   text-align: center;
-  margin: auto;
+  max-width: 100vw;
+}
+
+.note-index>*:not(.sidebar) {
+  grid-column: 2;
+}
+
+.note-index .sidebar {
+  grid-column: 1;
+}
+
+.note-index .sidebar button {
+  display: block;
+  padding: 12px;
+  border-radius: 50%;
+  transition: .1s ease-in;
+}
+
+.note-index .sidebar button:is(:hover, :active) {
+  background-color: var(--sidebar-color);
+}
+
+.note-index .sidebar button svg {
+  display: block;
+}
+
+.note-index .btn-empty {
+  color: var(--google-main-color)
+}
+
+@media (max-width: 768px) {
+  .note-index {
+    grid-template-columns: 40px 1fr;
+  }
 }

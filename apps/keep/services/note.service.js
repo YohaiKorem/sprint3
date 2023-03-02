@@ -8,6 +8,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteVideo',
     isPinned: true,
+    isRemoved: false,
     style: {
       backgroundColor: '#FFFFFF'
     },
@@ -21,6 +22,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
+    isRemoved: false,
     style: {
       backgroundColor: '#FFF475'
     },
@@ -34,6 +36,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteTodo',
     isPinned: true,
+    isRemoved: false,
     style: {
       backgroundColor: '#ffffff'
     },
@@ -47,6 +50,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteImg',
     isPinned: false,
+    isRemoved: false,
     style: {
       backgroundColor: '#CCFF90'
     },
@@ -60,6 +64,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
+    isRemoved: false,
     style: {
       backgroundColor: '#F28B82'
     },
@@ -73,6 +78,7 @@ const demoNotes = [
     createdAt: Date.now(),
     type: 'NoteImg',
     isPinned: false,
+    isRemoved: false,
     style: {
       backgroundColor: '#CBF0F8'
     },
@@ -94,14 +100,11 @@ export const noteService = {
   createImg,
 }
 
-function query(filterBy = {}) {
+function query(filterBy = { txt: '' }) {
   return storageService.query(NOTE_KEY).then((notes) => {
     if (filterBy.txt) {
       const regex = new RegExp(filterBy.txt, 'i')
-      notes = notes.filter((note) => regex.test(note.title))
-    }
-    if (filterBy.maxPrice) {
-      notes = notes.filter((note) => note.listPrice.amount <= filterBy.maxPrice)
+      notes = notes.filter(note => regex.test(note.info.txt) || regex.test(note.info.title))
     }
     return notes
   })
@@ -142,6 +145,7 @@ function getEmptyNote(info = { txt: '' }, type = 'NoteTxt') {
     createdAt: Date.now(),
     type,
     isPinned: false,
+    isRemoved: false,
     style: {
       backgroundColor: 'white'
     },

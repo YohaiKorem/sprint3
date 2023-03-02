@@ -1,3 +1,12 @@
+.note-filter {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 50vw;
+  max-width: 600px;
+}
+
 .note-filter .search-bar {
   padding-inline: 12px;
   background-color: #f1f3f4;
@@ -8,4 +17,13 @@
   flex-grow: 1;
   background-color: #f1f3f4;
   border: none;
+}
+
+@media (max-width: 768px) {
+  .note-filter {
+    position: static;
+    transform: translate(0);
+    /* inset: 0; */
+    width: calc(90vw - 40px);
+  }
 }

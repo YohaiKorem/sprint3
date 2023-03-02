@@ -6,7 +6,7 @@
   position: relative;
   text-align: left;
   padding-inline: 1rem;
-  width: 80vw;
+  width: calc(90vw - 40px);
   max-width: 600px;
 
   border: 1px solid var(--border-color);
@@ -39,4 +39,10 @@
 
 .add-note-container .tool-bar {
   grid-column: 1 / span 2;
+}
+
+@media (max-width: 768px) {
+  .add-note-container {
+    grid-template-columns: 1fr;
+  }
 }

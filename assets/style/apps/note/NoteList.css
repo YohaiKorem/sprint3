@@ -1,6 +1,11 @@
+.note-list {
+  width: calc(90vw - 40px);
+  max-width: 1200px;
+}
+
 .note-list .pinned-notes,
 .note-list .other-notes {
-  columns: 200px 4;
+  columns: 180px 4;
   gap: 1rem;
 }
 

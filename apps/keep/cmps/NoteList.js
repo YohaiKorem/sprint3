@@ -34,12 +34,11 @@ export default {
 
   computed: {
     getPinnedNotes() {
-      console.log('pinned:', this.notes.filter(note => note.isPinned))
-
       return this.notes.filter(note => note.isPinned)
     },
 
     getOtherNotes() {
+      console.log('notes in list:', this.notes)
       return this.notes.filter(note => !note.isPinned)
     }
   },
