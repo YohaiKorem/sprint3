@@ -21,7 +21,7 @@
   grid-template-columns: 0.5fr repeat(3, 1fr);
   grid-template-rows: 1fr;
   align-items: center;
-  margin-inline-start: 1em;
+  padding-inline-start: 1em;
   align-items: center;
 }
 
