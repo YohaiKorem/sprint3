@@ -39,6 +39,10 @@
   padding: 0;
 }
 
-.btn-bg-color {
+.note-edit img {
+  border-radius: .5rem;
+}
+
+.note-edit .btn-bg-color {
   position: relative;
 }
