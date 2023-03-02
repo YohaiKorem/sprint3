@@ -1,0 +1,8 @@
+.app-footer {
+  height: 12vh;
+  background-color: var(--clr1);
+  color: var(--clr4);
+  padding: 1em;
+  margin-block-start: 1rem;
+  border: 1px solid var(--border-color);
+}

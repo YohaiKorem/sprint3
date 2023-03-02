@@ -1,12 +1,10 @@
 :root {
   --clr1: rgb(255, 255, 255);
   --clr2: rgb(240, 240, 240);
-  --clr3: rgb(155, 155, 155);
+  --clr3: rgb(133, 133, 133);
   --clr4: #5f6368;
   --clr5: rgb(0, 0, 0);
-
-  --secondary-clr1: rgb(88, 201, 58);
-  --secondary-clr2: rgb(122, 7, 70);
+  --google-main-color: #4285F4;
 
   /* Mail */
   --mailclr1: rgb(226, 238, 255);
