@@ -1,10 +1,21 @@
 .note-preview {
+  position: relative;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 12px;
+  color: var(--text-color);
+  transition: .2s ease-in;
 }
 
-.tool-box>*:not(article) {
+.note-preview .note-title {
+  font-size: 1rem;
+}
+
+.note-preview .note-txt {
+  font-size: 1.125rem;
+}
+
+.tool-box>.item {
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -15,7 +26,7 @@
   opacity: 0.7;
 }
 
-.tool-box>*:hover {
+.tool-box>.item:hover {
   background-color: rgba(95, 99, 104, 0.157);
   opacity: 0.86;
 }

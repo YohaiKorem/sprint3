@@ -55,17 +55,15 @@ export default {
       this.filterBy = filterBy
     },
     updateNote(note) {
-      console.log('note:', note)
       noteService.save(note)
         .then(() => {
           noteService.query()
             .then(notes => {
               this.notes = notes
             })
-          showSuccessMsg('Note Added')
         })
         .catch(err => {
-          showErrorMsg('Note add failed')
+          showErrorMsg('Note update failed')
         })
     }
   },

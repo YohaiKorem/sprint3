@@ -3,8 +3,8 @@ export default {
   props: ['info'],
   template: `
     <article class="note txt-note">
-      <h2>{{info.title}}</h2>
-      <h3>{{info.txt}}</h3>
+      <h3 class="note-title">{{info.title}}</h3>
+      <p class="note-txt">{{info.txt}}</p>
     </article>
   `,
 

@@ -29,20 +29,20 @@ const demoNotes = [
       txt: 'wowww'
     }
   },
+  {
+    id: 'n103',
+    type: 'NoteImg',
+    isPinned: false,
+    info: {
+      imgUrl: 'http://some-img/me',
+      title: 'Bobi and Me'
+    },
+    style: {
+      backgroundColor: '#FFF475'
+    }
+  },
   // {
-  //   id: 'n102',
-  //   type: 'NoteImg',
-  //   isPinned: false,
-  //   info: {
-  //     url: 'http://some-img/me',
-  //     title: 'Bobi and Me'
-  //   },
-  //   style: {
-  //     backgroundColor: '#FFF475'
-  //   }
-  // },
-  // {
-  //   id: 'n103',
+  //   id: 'n104',
   //   type: 'NoteTodos',
   //   isPinned: false,
   //   info: {
@@ -91,6 +91,20 @@ function save(note) {
   }
 }
 
+function createImg(ev) {
+  return new Promise(resolve => {
+    const reader = new FileReader()
+
+    reader.onload = function (event) {
+      let img = new Image()
+      img.src = event.target.result
+
+      resolve(img.src)
+    }
+    reader.readAsDataURL(ev.target.files[0])
+  })
+}
+
 function getEmptyNote(info = { txt: '' }, type = 'NoteTxt') {
   return {
     createdAt: Date.now(),
@@ -117,13 +131,3 @@ function _createNote(title, price = 20) {
   return note
 }
 
-// function _setNextPrevNoteId(note) {
-//   return storageService.query(NOTE_KEY).then((notes) => {
-//     const noteIdx = notes.findIndex((currNote) => currNote.id === note.id)
-//     note.nextNoteId = notes[noteIdx + 1] ? notes[noteIdx + 1].id : notes[0].id
-//     note.prevNoteId = notes[noteIdx - 1]
-//       ? notes[noteIdx - 1].id
-//       : notes[notes.length - 1].id
-//     return note
-//   })
-// }

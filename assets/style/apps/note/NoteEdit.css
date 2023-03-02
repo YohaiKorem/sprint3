@@ -9,6 +9,7 @@
   z-index: 2;
 
   width: 80vw;
+  color: var(--text-color);
   max-width: 650px;
   padding: 12px;
   border-radius: 10px;

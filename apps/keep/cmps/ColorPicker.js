@@ -6,12 +6,12 @@ export default {
   <article class="color-picker flex justify-between">
       <div v-for="(color, idx) in colors"
       @click.prevent="changeColor(color)" 
-      :style="{background: color }" className="color-icon" :key="idx"></div>
+      :style="{backgroundColor: color }" className="color-icon" :key="idx"></div>
   </article>
 `,
   data() {
     return {
-      colors: ['#41425e', '#f28b82', '#fbbc04', '#fff475', '#ccff90', '#a7ffeb', '#cbf0f8', '#aecbfa', '#d7aefb', '#fdcfe8', '#e6c9a8', '#e8eaed']
+      colors: ['#ffffff', '#F28B82', '#FBBC04', '#FFF475', '#CCFF90', '#A7FFEB', '#CBF0F8', '#AECBFA', '#D7AEFB', '#FDCFE8', '#E6C9A8', '#E8EAED']
     }
   },
 
@@ -20,14 +20,6 @@ export default {
       this.$emit('updateColor', color);
     }
   },
-  computed: {
 
-  },
-  created() {
-
-  },
-  components: {
-
-  },
-  emits: [],
+  emits: ['updateColor'],
 }

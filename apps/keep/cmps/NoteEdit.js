@@ -13,10 +13,9 @@ export default {
           <div class="editable-div" ref="txt" contenteditable="true" @input="changeTxt">{{note.info.txt}}</div>
           <div class="tool-bar flex align-center justify-between">
             <div class="tool-box flex justify-center">
-              <div class="btn-bg-color" @click.prevent="toggleColorPicker">
-                <ColorPicker :note="note" @updateColor="onUpdateColor" v-show="showColorPicker"/>
-              </div>
-              <div class="btn-remove" @click.prevent="removeNote"></div>
+              <div class="item btn-bg-color" title="background color" @click.prevent="toggleColorPicker"></div>
+              <ColorPicker :note="note" @updateColor="updateColor" v-show="showColorPicker"/>
+              <div class="item btn-remove" title="remove" @click.prevent="removeNote"></div>
             </div>
             <RouterLink :to="'/keep'">close</RouterLink>
         </div>
@@ -35,10 +34,8 @@ export default {
   },
 
   methods: {
-    onUpdateColor(color) {
-      console.log('color to be updated:', color)
-      this.note.style.backgroundColorס = color
-      console.log('note to be updated:', this.note)
+    updateColor(color) {
+      this.note.style.backgroundColor = color
       eventBusService.emit('updateNote', this.note)
     },
 
