@@ -1,5 +1,5 @@
 .note-list {
-  column-count: 4;
+  columns: 200px 4;
   break-inside: avoid-column;
   gap: 1rem;
 }

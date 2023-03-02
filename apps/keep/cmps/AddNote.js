@@ -63,7 +63,6 @@ export default {
         }
       })
       this.note.info.list = list
-      console.log('note todo:', this.note)
     },
 
     toggleColorPicker() {
@@ -85,7 +84,6 @@ export default {
     },
 
     closeWideMode(event) {
-      console.log('check if cound be save...')
       if (this.isWideMode && !this.$refs.addNoteContainer.contains(event.target)) {
         this.isWideMode = false
         if (this.note.info.title

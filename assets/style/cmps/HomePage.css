@@ -1,0 +1,33 @@
+.home-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  margin: auto 40px;
+  height: calc(76vh - 2rem);
+}
+
+.home-page h1 {
+  color: var(--clr4);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-page h2 {
+  font-weight: normal;
+  color: var(--clr3);
+}
+
+.home-page .slogen-wrapper {
+  gap: 12px;
+}
+
+.home-page .btn-group {
+  gap: 12px;
+}
+
+.home-page .btn-google {
+  padding: 12px 26px;
+  color: var(--clr1);
+  background-color: var(--google-main-color);
+  border-radius: .5rem;
+}

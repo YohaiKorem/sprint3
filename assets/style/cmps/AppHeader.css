@@ -1,8 +1,10 @@
 .app-header {
+  height: 12vh;
   background-color: var(--clr1);
-  color: var(--secondary-clr1);
+  color: var(--clr4);
   padding: 1em;
-  border: 1px solid var(--border-color)
+  margin-block-end: 1rem;
+  border: 1px solid var(--border-color);
 }
 
 @media(max-width: 720px) {

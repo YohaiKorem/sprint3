@@ -39,7 +39,6 @@ export default {
     },
 
     onSaveNote(newNote) {
-      console.log('saving this note...', newNote)
       noteService.save(newNote)
         .then(() => {
           this.notes.unshift(newNote)
