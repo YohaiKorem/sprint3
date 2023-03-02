@@ -38,6 +38,16 @@
     list-style-type: none;
 }
 
+/* Button helpers */
+.clean-btn {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
 /* font awsome */
 
 .fa {

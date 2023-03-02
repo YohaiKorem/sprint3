@@ -1,8 +1,9 @@
 .add-note-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   align-items: center;
 
+  position: relative;
   text-align: left;
   padding: 12px 16px;
   width: 80vw;
@@ -20,7 +21,6 @@
   height: 42px;
 
   border-radius: 50%;
-
   opacity: 0.6;
 }
 
@@ -30,6 +30,13 @@
 }
 
 .add-note-container input {
+  color: var(--text-color);
+  background-color: transparent;
+  width: 100%;
   font-size: 1rem;
   border: none;
+}
+
+.add-note-container .tool-bar {
+  grid-column: 1 / span 2;
 }
