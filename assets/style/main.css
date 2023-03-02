@@ -21,6 +21,7 @@
 @import 'apps/note/AddNode.css';
 @import 'apps/note/NoteFilter.css';
 @import 'apps/note/NoteEdit.css';
+@import 'apps/note/NoteTools.css';
 @import 'apps/note/ColorPicker.css';
 
 /* Email pages and cmps */

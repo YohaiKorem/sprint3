@@ -5,7 +5,7 @@ const NOTE_KEY = ' noteDB'
 const demoNotes = [
   {
     id: 'n101',
-    createdAt: 1112222,
+    createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
     style: {
@@ -18,7 +18,7 @@ const demoNotes = [
   },
   {
     id: 'n102',
-    createdAt: 1112222,
+    createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
     style: {
@@ -31,18 +31,32 @@ const demoNotes = [
   },
   {
     id: 'n103',
+    createdAt: Date.now(),
+    type: 'NoteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: '#F28B82'
+    },
+    info: {
+      title: 'What is Lorem Ipsum?',
+      txt: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer'
+    }
+  },
+  {
+    id: 'n104',
+    createdAt: Date.now(),
     type: 'NoteImg',
     isPinned: false,
     info: {
-      imgUrl: 'http://some-img/me',
+      imgUrl: 'https://observer.ug/images2/women/Bobi-Wine-and-Barbie-Share-First-Joint-Magazine-Cover.jpg',
       title: 'Bobi and Me'
     },
     style: {
-      backgroundColor: '#FFF475'
+      backgroundColor: '#CBF0F8'
     }
   },
   // {
-  //   id: 'n104',
+  //   id: 'n105',
   //   type: 'NoteTodos',
   //   isPinned: false,
   //   info: {
@@ -60,6 +74,7 @@ export const noteService = {
   remove,
   save,
   getEmptyNote,
+  createImg,
 }
 
 function query(filterBy = {}) {
@@ -83,11 +98,11 @@ function remove(noteId) {
   return storageService.remove(NOTE_KEY, noteId)
 }
 
-function save(note) {
+function save(note, append = true) {
   if (note.id) {
     return storageService.put(NOTE_KEY, note)
   } else {
-    return storageService.post(NOTE_KEY, note)
+    return storageService.post(NOTE_KEY, note, append)
   }
 }
 
@@ -108,10 +123,10 @@ function createImg(ev) {
 function getEmptyNote(info = { txt: '' }, type = 'NoteTxt') {
   return {
     createdAt: Date.now(),
-    type: 'NoteTxt',
+    type,
     isPinned: false,
     style: {
-      backgroundColor: '#FFF475'
+      backgroundColor: 'white'
     },
     info,
   }
@@ -125,9 +140,9 @@ function _createNotes() {
   }
 }
 
-function _createNote(title, price = 20) {
-  const note = getEmptyNote(title, price)
-  note.id = utilService.makeId(11)
-  return note
-}
+// function _createNote(title, price = 20) {
+//   const note = getEmptyNote(title, price)
+//   note.id = utilService.makeId(11)
+//   return note
+// }
 

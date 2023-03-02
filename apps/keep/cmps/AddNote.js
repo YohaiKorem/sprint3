@@ -13,11 +13,13 @@ export default {
   `,
   data() {
     return {
-      note: noteService.getEmptyNote(),
+      type: 'NoteTxt',
+      note: noteService.getEmptyNote(this.type, undefined),
     }
   },
   methods: {
     save() {
+      this.note = noteService.getEmptyNote()
       this.$emit('saveNote', this.note)
       this.note = noteService.getEmptyNote()
     }

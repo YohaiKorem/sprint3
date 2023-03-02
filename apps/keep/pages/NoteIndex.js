@@ -15,7 +15,7 @@ export default {
         <NoteList :notes="notes"  v-if="notes" @removeNote="onRemoveNote"/>
       </section>
 
-      <router-view @calll=""></router-view>
+      <router-view/>
   `,
 
   data() {
@@ -26,9 +26,6 @@ export default {
   },
 
   methods: {
-    calll() {
-      console.log('IM the parent')
-    },
     onRemoveNote(noteId) {
       noteService.remove(noteId)
         .then(() => {
@@ -42,7 +39,7 @@ export default {
     },
     onSaveNote(newNote) {
       console.log('new note:', newNote)
-      noteService.save(newNote)
+      noteService.save(newNote, false)
         .then(() => {
           this.notes.unshift(newNote)
           showSuccessMsg('Note Added')
