@@ -92,8 +92,9 @@ export default {
     },
 
     onEmptyTrash() {
-      confirm('Are you sure you want to empty all notes in trash?')
       let notes = this.notes.filter(note => note.isRemoved)
+      if (!notes) return
+      confirm('Are you sure you want to empty all notes in trash?')
       notes.forEach(note => {
         this.onRemovePermamentlyNote(note.id)
       })
