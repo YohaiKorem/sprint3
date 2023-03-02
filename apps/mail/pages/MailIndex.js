@@ -11,9 +11,14 @@ export default {
   name: 'MailIndex',
   template: `
 <section class="mail-index">
+  <button @click="sendMail" 
+  class="compose-mail">
+   <img class="icon pencil-icon" src="assets/img/mailImg/icons/icons8-pencil-48.png">
+   Compose</button> 
   <div class="input-heading-container full">
 <div class="btns-container">
   <h1>Your inbox</h1>
+
   <button @click="test">test</button>
   <button @click="clearStorage">clear</button>
 </div>

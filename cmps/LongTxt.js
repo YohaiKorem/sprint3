@@ -8,7 +8,7 @@ export default {
     length: {
       type: Number,
       required: false,
-      default: 60,
+      default: 20,
     },
   },
   template: `
