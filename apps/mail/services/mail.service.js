@@ -55,6 +55,7 @@ function getEmptyMail(from = '', to = '', subject = '', body = '') {
     id: '',
     subject,
     body,
+    isSelected: false,
     isRead: false,
     isStarred: false,
     folder: 'inbox',

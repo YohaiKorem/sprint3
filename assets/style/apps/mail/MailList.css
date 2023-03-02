@@ -14,8 +14,15 @@
 
 .mail-item {
   cursor: pointer;
-  /* padding: 10px; */
   border-bottom: 0.2px solid rgb(139, 131, 131);
+}
+.mail-item:hover * {
+  opacity: 1;
+}
+
+.mail-item:hover {
+  z-index: 2;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .folder-list-container {
