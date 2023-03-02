@@ -11,14 +11,23 @@ export default {
       </ul>
     `,
   methods: {
-    sendMail() {
-      console.log('mail sent')
-    },
     setTrash() {
       console.log('trash')
     },
     setSpam() {
       console.log('spam')
+    },
+    setSent() {
+      console.log('sent')
+    },
+    setImportant() {
+      console.log('important')
+    },
+    setDrafts() {
+      console.log('draft')
+    },
+    setStarred() {
+      console.log('star')
     },
   },
 }

@@ -9,6 +9,7 @@ const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 _createMails()
 
 export const mailService = {
+  loggedinUser,
   query,
   get,
   remove,
@@ -43,6 +44,7 @@ function remove(mailId) {
 }
 
 function save(mail) {
+  console.log(mail)
   if (mail.id) {
     return storageService.put(MAIL_KEY, mail)
   } else {

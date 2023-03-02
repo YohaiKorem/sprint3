@@ -1,5 +1,7 @@
 .mail-list {
   justify-self: center;
+  overflow-y: scroll;
+  max-height: 500px;
 }
 
 .mail-list ul {
