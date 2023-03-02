@@ -6,29 +6,35 @@ export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
+    <article @mouseout="hideIcons" @mouseover="showIcons" :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
   <div class="btns-container">
     <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
-    <!-- <div @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</div> -->
     <div @click="star" class="star-icon icon">★</div>
     <div @click="important" class="important-icon-container" ><img class="important-icon icon" src="assets/img/mailImg/icons/importantArrow.png">
 </div>
-
-    <div @click="removeMail"
-     class="btn-remove"> 
-     <img src="assets/img/mailImg/icons/trash.png" 
-     class="icon trash-icon">
-     </div>
+    
   </div>
-  <!-- <RouterLink class="mail-preview" :to="'mail/' + mail.id">        </RouterLink> -->
-
          <h2 class="mail-from">from: {{ mail.from }}</h2> 
-         <!-- <LongTxt :txt="mail.body"/> -->
          <p class="mail-body">{{mail.body}}</p>
-         <span class="mail-timestamp">sent at: {{mail.sentAt}}</span>
+         <div v-if="isHovered"  class="hidden-icons-container">
+            <div @click="removeMail" class="btn-remove"> 
+              <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon">
+     </div>
+     <div @click="markAsRead" class="btn-readUnread">
+     <img :class="isRead +'-icon icon'" :src="'assets/img/mailImg/icons/'+isRead + '.png'">
+
+     </div>
+    
+    
+    </div>
+         <span v-if="!this.isHovered" class="mail-timestamp">sent at: {{mail.sentAt}}</span>
         </article>
     `,
-
+  data() {
+    return {
+      isHovered: null,
+    }
+  },
   methods: {
     markAsRead() {
       this.mail.isRead = !this.mail.isRead
@@ -50,10 +56,12 @@ export default {
     removeMail() {
       this.mail.folder = 'trash'
       eventBusService.emit('update', this.mail)
-
-      // mailService.remove(this.mail.id).then((mails) => {
-      //   eventBusService.emit('renderInboxFromOtherCmp', this.mail)
-      // })
+    },
+    showIcons() {
+      this.isHovered = true
+    },
+    hideIcons() {
+      this.isHovered = false
     },
   },
   computed: {

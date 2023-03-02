@@ -6,7 +6,7 @@ export default {
   template: `
   <h1>{{folder}}</h1>
       <ul class="clean-list folder-list">
-        <li @click="setFolder('inbox')">Inbox</li>
+        <li @click="setFolder('inbox')">Inbox</li> <span>{{unreadMailsCount}}</span>
         <li @click="setFolder('trash')">Trash</li> 
         <li @click="setFolder('sent')">Sent</li> 
         <li @click="setFolder('important')">Important</li> 
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       folder: '',
+      unreadMailsCount: null,
     }
   },
   methods: {

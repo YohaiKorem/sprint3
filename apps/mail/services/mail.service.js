@@ -42,7 +42,13 @@ function save(mail, append = false) {
   }
 }
 
-function getEmptyMail(from = '', to = '', subject = '', body = '') {
+function getEmptyMail(
+  from = '',
+  to = '',
+  subject = '',
+  body = '',
+  sentAt = null
+) {
   return {
     id: '',
     subject,
@@ -64,7 +70,15 @@ function _createMails() {
   let mails = utilService.loadFromStorage(MAIL_KEY)
   if (!mails || !mails.length) {
     mails = []
-    mails.push(_createMail('me', 'you', 'a subject', 'the mail content'))
+    mails.push(
+      _createMail(
+        'me',
+        'you',
+        'a subject',
+        'the mail content',
+        utilService.getRandomDate()
+      )
+    )
     mails.push(_createMail('yohai', 'noa'))
     mails.push(_createMail())
     mails.push(_createMail())

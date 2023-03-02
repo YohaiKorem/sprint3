@@ -15,7 +15,7 @@ export default {
   <RouterLink :to="'/mail/edit' ">
   <button  
   class="compose-mail">
-   <img class="icon pencil-icon" src="assets/img/mailImg/icons/icons8-pencil-48.png">
+   <img class="icon pencil-icon" src="assets/img/mailImg/icons/pencil.png">
    Compose</button>  
      </RouterLink>
 
@@ -42,17 +42,19 @@ export default {
       mails: [],
       criteria: {},
       folder: 'inbox',
+      unreadMailsCount: 0,
     }
   },
   created() {
     mailService.query().then((mails) => {
       this.mails = mails
+      mails.forEach((mail) => {
+        if (!mail.isRead) this.unreadMailsCount++
+      })
     })
     eventBusService.on('update', (mail) => {
       // console.log(this.folder)
-      mailService.save(mail).then(() => {
-        mailService.query().then((mails) => (this.mails = mails))
-      })
+      mailService.save(mail).then(() => this.render())
     })
   },
   methods: {
@@ -75,39 +77,40 @@ export default {
     removeForEver() {
       let selectedMails = this.mails.filter((mail) => mail.isSelected)
       selectedMails.forEach((selectedMail) => {
-        mailService.remove(selectedMail.id).then(() => {
-          const idx = this.mails.findIndex(
-            (mail) => mail.id === selectedMail.id
-          )
-          this.mails.splice(idx, 1)
-        })
-        // let res = selectedMails.map((selectedMail) => {
-        //   return this.mails.findIndex((mail) => mail.id === selectedMail.id)
-        // })
-        // console.log(res)
+        this.removeMail(selectedMail.id)
       })
+      // mailService.remove(selectedMail.id).then(() => {
+      //   const idxs = []
+      //   idxs.push(this.mails.findIndex((mail) => mail.id === selectedMail.id))
+      //   idxs.forEach((idx) => this.mails.splice(idx, 1))
+      // })
     },
     setFolder(folder) {
       this.folder = folder
-      mailService.query(this.folder).then((mails) => {
-        this.mails = mails
-      })
+      this.render()
     },
     setCriteria(criteria) {
       this.criteria = criteria
     },
+    render() {
+      mailService.query(this.folder).then((mails) => (this.mails = mails))
+    },
     test() {
-      console.log(this.mails)
+      console.log(this.unreadMailsCount)
     },
   },
   computed: {
     filteredMails() {
-      this.mails = this.mails.filter((mail) => {
-        return mail.folder === this.folder
-      })
       const regex = new RegExp(this.criteria.txt, 'i')
 
       return this.mails.filter((mail) => regex.test(mail.body))
+    },
+    unreadMailsCount() {
+      let count = 0
+      this.mails.forEach((mail) => {
+        if (mail.isRead) count++
+      })
+      return count
     },
   },
 

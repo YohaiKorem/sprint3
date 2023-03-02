@@ -6,6 +6,13 @@ export const utilService = {
   clearLocalStorage,
   animateCSS,
   makeLorem,
+  getRandomDate,
+}
+
+function getRandomDate() {
+  const maxDate = Date.now()
+  const timestamp = Math.floor(Math.random() * maxDate)
+  return new Date(timestamp)
 }
 
 function makeId(length = 5) {
