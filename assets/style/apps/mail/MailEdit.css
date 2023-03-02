@@ -1,0 +1,51 @@
+.mail-edit {
+  /* border-radius: 1em; */
+  /* padding: 1em; */
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  bottom: 0;
+  right: 5%;
+  width: 30%;
+  height: 60%;
+  background-color: white;
+}
+
+.mail-edit div:not(.icon, .btns-container-mail) {
+  border-bottom: 0.5px solid;
+  padding-inline: 0.625em;
+}
+
+.mail-header {
+  display: flex;
+  background-color: rgb(242 242 242);
+}
+.btns-container-mail {
+  display: flex;
+  background-color: inherit;
+  justify-content: space-between;
+  align-self: center;
+  align-items: center;
+}
+
+.btns-container-mail .icon {
+  padding: 0.3em;
+}
+
+.mail-edit h2 {
+  width: 100%;
+  padding: 0.5em;
+}
+.mail-subject-container,
+.mail-to-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+textarea[name='mail-body'],
+input[name='mail-subject-input'],
+input[name='mail-to-input'] {
+  outline: 0;
+  border: 0;
+  width: 100%;
+}

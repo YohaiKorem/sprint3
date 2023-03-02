@@ -14,57 +14,68 @@ import SpamPreview from './apps/mail/cmps/SpamPreview.js'
 const { createRouter, createWebHashHistory } = VueRouter
 
 const routerOptions = {
-   history: createWebHashHistory(),
-   routes: [
-      {
-         path: '/',
-         component: HomePage,
-      },
-      {
-         path: '/about',
-         component: AboutUs,
-      },
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: '/',
+      component: HomePage,
+    },
+    {
+      path: '/about',
+      component: AboutUs,
+    },
 
-      // KEEP PATHS
-      {
-         path: '/keep',
-         component: NoteIndex,
-         name: 'keep',
-         children: [{
-            path: '/keep/edit/:noteId',
-            component: NoteEdit,
-            props: true,
-            name: 'note-edit'
-         }]
-      },
-      // {
-      //    path: '/keep/trash',
-      //    component: keepTrash,
-      //    name: 'keep-trash'
-      // },
+    // KEEP PATHS
+    {
+      path: '/keep',
+      component: NoteIndex,
+      name: 'keep',
+      children: [
+        {
+          path: '/keep/edit/:noteId',
+          component: NoteEdit,
+          props: true,
+          name: 'note-edit',
+        },
+      ],
+    },
+    // {
+    //    path: '/keep/trash',
+    //    component: keepTrash,
+    //    name: 'keep-trash'
+    // },
 
-      // MAIL PATHS
-      {
-         path: '/mail',
-         component: MailIndex,
-      },
-      {
-         path: '/mail/:mailId',
-         component: MailEdit,
-      },
-      {
-         path: '/mail/edit/:mailId?',
-         component: MailEdit,
-      },
-      {
-         path: '/mail/trash',
-         component: TrashPreview,
-      },
-      {
-         path: '/mail/spam',
-         component: SpamPreview,
-      },
-   ],
+    // MAIL PATHS
+    {
+      path: '/mail',
+      component: MailIndex,
+      name: 'mail',
+      children: [
+        {
+          path: '/mail/edit/',
+          component: MailEdit,
+          props: true,
+          name: 'mail-edit',
+        },
+      ],
+    },
+    //  {
+    //    path: '/mail/:mailId',
+    //    component: MailEdit,
+    //  },
+    //  {
+    //    path: '/mail/edit/:mailId?',
+    //    component: MailEdit,
+    //  },
+    {
+      path: '/mail/trash',
+      component: TrashPreview,
+    },
+    {
+      path: '/mail/spam',
+      component: SpamPreview,
+    },
+  ],
 }
 
 export const router = createRouter(routerOptions)
