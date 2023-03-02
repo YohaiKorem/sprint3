@@ -11,7 +11,7 @@
   flex-direction: column;
 }
 .folder-list li {
-  color: rgb(230, 140, 22);
+  color: white;
   cursor: pointer;
   font-size: 2em;
 }

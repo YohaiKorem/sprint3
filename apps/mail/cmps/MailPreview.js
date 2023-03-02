@@ -6,7 +6,7 @@ export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article @mouseout="hideIcons" @mouseover="showIcons" :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
+    <article @click="editMail" @mouseout="hideIcons" @mouseover="showIcons" :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
   <div class="btns-container">
     <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
     <div @click="star" class="star-icon icon">★</div>
@@ -27,7 +27,7 @@ export default {
     
     
     </div>
-         <span v-if="!this.isHovered" class="mail-timestamp">sent at: {{mail.sentAt}}</span>
+         <span v-if="!this.isHovered" class="mail-timestamp"> {{new Date(mail.sentAt).toLocaleString('en-GB')}}</span>
         </article>
     `,
   data() {
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    editMail() {
+      this.$router.push(`/mail/edit/${this.mail.id}`)
+    },
     markAsRead() {
       this.mail.isRead = !this.mail.isRead
       eventBusService.emit('update', this.mail)

@@ -105,10 +105,12 @@ export default {
 
       return this.mails.filter((mail) => regex.test(mail.body))
     },
+  },
+  watch: {
     unreadMailsCount() {
       let count = 0
       this.mails.forEach((mail) => {
-        if (mail.isRead) count++
+        if (!mail.isRead) count++
       })
       return count
     },

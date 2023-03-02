@@ -8,8 +8,6 @@ import NoteEdit from './apps/keep/cmps/NoteEdit.js'
 import MailIndex from './apps/mail/pages/MailIndex.js'
 import MailEdit from './apps/mail/pages/MailEdit.js'
 import MailDetails from './apps/mail/cmps/MailDetails.js'
-import TrashPreview from './apps/mail/cmps/TrashPreview.js'
-import SpamPreview from './apps/mail/cmps/SpamPreview.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -57,24 +55,16 @@ const routerOptions = {
           props: true,
           name: 'mail-edit',
         },
+        {
+          path: '/mail/edit/:mailId?',
+          component: MailEdit,
+        },
       ],
     },
     //  {
     //    path: '/mail/:mailId',
     //    component: MailEdit,
     //  },
-    //  {
-    //    path: '/mail/edit/:mailId?',
-    //    component: MailEdit,
-    //  },
-    {
-      path: '/mail/trash',
-      component: TrashPreview,
-    },
-    {
-      path: '/mail/spam',
-      component: SpamPreview,
-    },
   ],
 }
 
