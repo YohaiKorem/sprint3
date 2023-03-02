@@ -7,8 +7,7 @@ export default {
   template: `
       <section class="note-edit" v-if="note">
         <div class="modal" :style="styleNote">
-          <h2>Edit Note:</h2>
-          <img v-if="note.info.url" src="note.info.url" />
+          <img v-if="note.info.imgUrl" :src="note.info.imgUrl" />
           <div class="editable-div" ref="title" contenteditable="true" @input="changeTitle">{{note.info.title}}</div>
           <div class="editable-div" ref="txt" contenteditable="true" @input="changeTxt">{{note.info.txt}}</div>
           <div class="tool-bar flex align-center justify-between">

@@ -10,7 +10,7 @@ export default {
           <div class="item btn-bg-color" title="background color" @click.stop.prevent="toggleColorPicker"></div>
           <ColorPicker ref="colorPicker" :note="note" @updateColor="updateColor" v-show="showColorPicker"/>
           <label class="item btn-upload-img" for="image" title="upload image" @click.stop>
-            <input type="file" class="file-input btn" accept="image/png, image/jpeg"  name="image" id="image" @change="getImgUrl" />
+            <input type="file" class="file-input btn" accept="image/png, image/jpeg"  name="image" id="image" @change="updateImgUrl" />
           </label>
           <div class="item btn-remove" title="remove" @click.prevent="remove"></div>
         </article>
@@ -42,9 +42,12 @@ export default {
       }
     },
 
-    getImgUrl(ev) {
+    updateImgUrl(ev) {
       const url = noteService.createImg(ev)
-        .then(url => this.$emit('updateImgUrl', url))
+        .then(url => {
+          this.note.info.imgUrl = url
+          eventBusService.emit('updateNote', this.note)
+        })
     },
   },
 

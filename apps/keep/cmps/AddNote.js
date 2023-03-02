@@ -19,7 +19,7 @@ export default {
           <article class="tool-box flex justify-center">
             <div class="item btn-bg-color" title="background color" @click.stop.prevent="toggleColorPicker"></div>
             <ColorPicker ref="colorPicker" :note="note" @updateColor="updateColor" v-show="showColorPicker"/>
-            <label class="item btn-upload-img" for="image" title="upload image" @click.stop>
+            <label class="item btn-upload-img" for="image" title="upload image" @click.stop="changeType('NoteImg')">
               <input type="file" class="file-input btn" accept="image/png, image/jpeg"  name="image" id="image" @change="updateImgUrl" />
             </label>
         </article>
@@ -43,7 +43,6 @@ export default {
     },
 
     save() {
-      console.log('saving this note...', this.note)
       this.$emit('saveNote', this.note)
       this.note = noteService.getEmptyNote()
     },
@@ -59,7 +58,6 @@ export default {
 
     updateColor(color) {
       this.note.style.backgroundColor = color;
-      console.log(this.note.style.backgroundColor)
     },
 
     closeColorPicker(event) {
@@ -73,7 +71,6 @@ export default {
     },
 
     closeWideMode(event) {
-      console.log('current note:', this.note)
       if (this.isWideMode && !this.$refs.addNoteContainer.contains(event.target)) {
         this.isWideMode = false
         if (this.note.info.title || this.note.info.txt || this.note.info.imgUrl) {

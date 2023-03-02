@@ -12,7 +12,7 @@ export default {
       <section class="note-index flex flex-column align-center">
         <NoteFilter @filter="setFilterBy"/>
         <AddNote @saveNote="onSaveNote"/>
-        <NoteList :notes="notes"  v-if="notes" @removeNote="onRemoveNote"/>
+        <NoteList :notes="filteredNotes"  v-if="notes" @removeNote="onRemoveNote"/>
       </section>
 
       <router-view/>
@@ -37,8 +37,9 @@ export default {
           showErrorMsg('Note remove failed')
         })
     },
+
     onSaveNote(newNote) {
-      console.log('new note:', newNote)
+      console.log('saving this note...', newNote)
       noteService.save(newNote)
         .then(() => {
           this.notes.unshift(newNote)
@@ -48,9 +49,11 @@ export default {
           showErrorMsg('Note add failed')
         })
     },
+
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
+
     updateNote(note) {
       noteService.save(note)
         .then(() => {
@@ -67,8 +70,8 @@ export default {
 
   computed: {
     filteredNotes() {
-      const regex = new RegExp(this.filterBy.title, 'i')
-      return this.notes.filter(note => regex.test(note.title))
+      const regex = new RegExp(this.filterBy.txt, 'i')
+      return this.notes.filter(note => regex.test(note.info.txt) || regex.test(note.info.title))
     }
   },
 
