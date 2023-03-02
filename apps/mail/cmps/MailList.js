@@ -6,19 +6,25 @@ export default {
   template: `<section class="mail-list">
     <ul class="clean-list flex flex-column">
       
-        <li v-for="mail in mails" :key="mail.id" :class="isRead ? 'read' + ' mail-item' : 'unread' + ' mail-item' ">
+        <li v-for="mail in mails" :key="mail.id" class="mail-item">
            
-        <MailPreview @readUnread="readUnread" :mail="mail"/>
+        <MailPreview @selectMail="selectMail" @readUnread="readUnread" :mail="mail"/>
         
         </li>
     </ul>
   </section>`,
   data() {
-    return { isRead: false }
+    return {
+      isRead: false,
+      isSelected: false,
+    }
   },
   methods: {
     readUnread(isRead) {
       this.isRead = isRead
+    },
+    selectMail(isSelected) {
+      this.isSelected = isSelected
     },
   },
   components: {

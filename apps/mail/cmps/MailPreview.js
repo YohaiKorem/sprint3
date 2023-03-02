@@ -5,8 +5,9 @@ export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article :class="isRead + ' ' + isStarred + ' mail-preview'">
+    <article :class="isRead + ' ' + isSelected + ' ' + isStarred + ' mail-preview'">
   <div class="btns-container">
+    <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
     <div @click="markAsRead">Mark as {{(isRead === 'read') ? 'unread' : 'read'}}</div>
     <div @click="star" class="star-icon">★</div>
     <div @click="mail.folder='trash'" class="btn-remove"> <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon"> </div>
@@ -29,6 +30,9 @@ export default {
       this.mail.isStarred = !this.mail.isStarred
       mailService.save(this.mail)
     },
+    selectMail(isSelected) {
+      this.$emit('selectMail', isSelected)
+    },
   },
   computed: {
     isRead() {
@@ -39,7 +43,12 @@ export default {
       if (this.mail.isStarred) return 'starred'
       else return ''
     },
+    isSelected() {
+      if (this.mail.isSelected) return 'selected'
+      else return ''
+    },
   },
+
   components: {
     LongTxt,
   },

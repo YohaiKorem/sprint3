@@ -8,9 +8,11 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.mail-index * {
+  color: var(--mail-font-clr1);
+}
 .mail-index > * {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .mail-index > *:not(.full) {
