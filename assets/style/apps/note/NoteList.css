@@ -1,10 +1,21 @@
-.note-list {
+.note-list .pinned-notes,
+.note-list .other-notes {
   columns: 200px 4;
-  break-inside: avoid-column;
   gap: 1rem;
 }
 
-.note-list>* {
-  break-inside: avoid-column;
+.note-list .pinned-notes>*,
+.note-list .other-notes>* {
+  break-inside: avoid;
   margin-bottom: 1rem;
+}
+
+.note-list h2 {
+  color: var(--clr4);
+  text-align: left;
+  letter-spacing: .07272727em;
+  font-size: .6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  margin: 32px 32px 8px;
 }

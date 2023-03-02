@@ -6,9 +6,19 @@ export default {
   props: ['notes'],
   template: `
         <section class="note-list">
-          <div v-for="note in notes" :key="note.id">
-            <NotePreview :note="note" @removeNote="remove" />
-          </div>
+          <h2 v-show="getOtherNotes.length && getPinnedNotes.length">Pinned</h2>
+          <section class="pinned-notes">
+            <div v-for="note in getPinnedNotes" :key="note.id" >
+              <NotePreview :note="note" @removeNote="remove" />
+            </div>
+          </section>
+
+          <h2 v-show="getOtherNotes.length && getPinnedNotes.length">Others</h2>
+          <section class="other-notes">
+            <div v-for="note in getOtherNotes" :key="note.id">
+              <NotePreview :note="note" @removeNote="remove" />
+            </div>
+          </section>
         </section>
     `,
 
@@ -20,6 +30,18 @@ export default {
     updateInfo(noteId) {
       this.$emit('updateNote', noteId)
     },
+  },
+
+  computed: {
+    getPinnedNotes() {
+      console.log('pinned:', this.notes.filter(note => note.isPinned))
+
+      return this.notes.filter(note => note.isPinned)
+    },
+
+    getOtherNotes() {
+      return this.notes.filter(note => !note.isPinned)
+    }
   },
 
   components: {

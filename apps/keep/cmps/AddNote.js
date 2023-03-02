@@ -18,7 +18,7 @@ export default {
           <img class="item btn-todo" @click="changeType('NoteTodo')" src="../../../assets/img/keep/todo.svg" />
         </div>
         <div class="tool-bar flex align-center justify-between" v-show="isWideMode">
-          <article class="tool-box flex justify-center">
+          <article class="toolbox flex justify-center">
             <div class="item btn-bg-color" title="background color" @click.stop.prevent="toggleColorPicker"></div>
             <ColorPicker ref="colorPicker" :note="note" @updateColor="updateColor" v-show="showColorPicker"/>
             <label class="item btn-upload-img" for="image" title="upload image" @click.stop="changeType('NoteImg')">

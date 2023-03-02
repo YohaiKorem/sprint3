@@ -6,6 +6,15 @@
   transition: .2s ease-in;
 }
 
+.note-preview .toolbox {
+  opacity: 0;
+  transition: .2s ease-in;
+}
+
+.note-preview:hover .toolbox {
+  opacity: 1;
+}
+
 .note-preview img {
   border-radius: 8px;
 }
@@ -18,7 +27,6 @@
 
 .note-preview .note {
   text-align: left;
-
 }
 
 .note-preview .note-txt {
