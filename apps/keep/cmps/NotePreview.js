@@ -3,6 +3,7 @@ import NoteTools from './NoteTools.js'
 import NoteTxt from './NoteTxt.js'
 import NoteImg from './NoteImg.js'
 import NoteTodo from './NoteTodo.js'
+import NoteVideo from './NoteVideo.js'
 
 export default {
   name: 'NotePreview',
@@ -45,6 +46,7 @@ export default {
     NoteTxt,
     NoteImg,
     NoteTodo,
+    NoteVideo
   },
 
   emits: ['removeNote']

@@ -4,6 +4,19 @@ import { storageService } from '../../../services/async-storage.service.js'
 const NOTE_KEY = ' noteDB'
 const demoNotes = [
   {
+    id: 'n100',
+    createdAt: Date.now(),
+    type: 'NoteVideo',
+    isPinned: true,
+    style: {
+      backgroundColor: '#FFFFFF'
+    },
+    info: {
+      title: 'This is Coding Academy!',
+      videoUrl: 'https://www.youtube.com/watch?v=FWy_LbhHtug'
+    }
+  },
+  {
     id: 'n101',
     createdAt: Date.now(),
     type: 'NoteTxt',
@@ -12,7 +25,7 @@ const demoNotes = [
       backgroundColor: '#FFF475'
     },
     info: {
-      title: 'Yohai hamelech',
+      title: 'FRONT OR BACK?',
       txt: 'Fullstack Me Baby!'
     }
   },
@@ -22,15 +35,28 @@ const demoNotes = [
     type: 'NoteTodo',
     isPinned: true,
     style: {
-      backgroundColor: '#CCFF90'
+      backgroundColor: '#ffffff'
     },
     info: {
-      title: 'Yohai hagever',
-      list: [{ txt: 'eat', isDone: false }, { txt: 'code', isDone: false }]
+      title: 'Gotta do',
+      list: [{ txt: 'eat', isDone: false }, { txt: 'code', isDone: true }, { txt: 'sleep', isDone: false }, { txt: 'repeat', isDone: false }]
     }
   },
   {
     id: 'n103',
+    createdAt: Date.now(),
+    type: 'NoteImg',
+    isPinned: false,
+    style: {
+      backgroundColor: '#CCFF90'
+    },
+    info: {
+      imgUrl: 'https://c4.wallpaperflare.com/wallpaper/519/226/434/green-falls-river-wallpaper-preview.jpg',
+      title: 'Where I wonna be right now',
+    }
+  },
+  {
+    id: 'n104',
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
@@ -43,27 +69,18 @@ const demoNotes = [
     }
   },
   {
-    id: 'n104',
+    id: 'n105',
     createdAt: Date.now(),
     type: 'NoteImg',
     isPinned: false,
+    style: {
+      backgroundColor: '#CBF0F8'
+    },
     info: {
       imgUrl: 'https://observer.ug/images2/women/Bobi-Wine-and-Barbie-Share-First-Joint-Magazine-Cover.jpg',
       title: 'Bobi and Me'
     },
-    style: {
-      backgroundColor: '#CBF0F8'
-    }
   },
-  // {
-  //   id: 'n105',
-  //   type: 'NoteTodos',
-  //   isPinned: false,
-  //   info: {
-  //     title: 'Get my stuff together',
-  //     todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }]
-  //   }
-  // }
 ]
 
 _createNotes()

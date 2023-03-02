@@ -6,18 +6,8 @@ export default {
       <img :src="info.imgUrl" v-if="info.imgUrl"/>
       <h3 class="note-title">{{info.title}}</h3>
       <ul>
-        <li v-for="item in getlist">{{item}}</li>
+        <li v-for="item in info.list" :class="{ done: item.isDone }">{{item.txt}}</li>
       </ul>
     </article>
   `,
-  data() {
-    return {
-    }
-  },
-  computed: {
-    getlist() {
-      let list = this.info.list.map(item => item.txt)
-      return list
-    }
-  }
 }

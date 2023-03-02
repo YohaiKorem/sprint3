@@ -43,6 +43,10 @@
   border-radius: .5rem;
 }
 
+.note-edit li {
+  cursor: pointer;
+}
+
 .note-edit .btn-bg-color {
   position: relative;
 }

@@ -8,11 +8,13 @@ export default {
           <input type="text" v-model="note.info.title" placeholder="Title" v-show="isWideMode"/>
           <input type="text" v-model="note.info.txt" placeholder="Take a note..." v-show="type === 'NoteTxt'" @focus="onFocus" />
           <input type="text" v-model="note.info.imgUrl" placeholder="Enter image URL..." v-show="type === 'NoteImg'" @focus="onFocus" />
+          <input type="text" v-model="note.info.videoUrl" placeholder="Enter video URL..." v-show="type === 'NoteVideo'" @focus="onFocus" />
           <input type="text" @input="saveTodoList" placeholder="Enter comma seperated list..." v-show="type === 'NoteTodo'" @focus="onFocus" />
         </form>
         <div class="types-wrapper flex justify-evenly" v-show="!isWideMode">
           <img class="item btn-text" @click="changeType('NoteTxt')" src="../../../assets/img/keep/text.svg" />
           <img class="item btn-img" @click="changeType('NoteImg')" src="../../../assets/img/keep/image.svg" />
+          <img class="item btn-video" @click="changeType('NoteVideo')" src="../../../assets/img/keep/video.svg" />
           <img class="item btn-todo" @click="changeType('NoteTodo')" src="../../../assets/img/keep/todo.svg" />
         </div>
         <div class="tool-bar flex align-center justify-between" v-show="isWideMode">
@@ -52,8 +54,8 @@ export default {
         .then(url => this.note.info.imgUrl = url)
     },
 
-    saveTodoList(event) {
-      let list = event.target.value.split(', ')
+    saveTodoList(ev) {
+      let list = ev.target.value.split(', ')
       list = list.map(item => {
         return {
           txt: item,
@@ -86,7 +88,11 @@ export default {
       console.log('check if cound be save...')
       if (this.isWideMode && !this.$refs.addNoteContainer.contains(event.target)) {
         this.isWideMode = false
-        if (this.note.info.title || this.note.info.txt || this.note.info.imgUrl || this.note.info.list) {
+        if (this.note.info.title
+          || this.note.info.txt
+          || this.note.info.imgUrl
+          || this.note.info.videoUrl
+          || this.note.info.list) {
           this.save()
         }
       }

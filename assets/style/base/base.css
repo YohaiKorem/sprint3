@@ -32,13 +32,25 @@ input {
   outline: none;
 }
 
+.done {
+  text-decoration: line-through;
+}
+
+
 /* Dont stretch my Media */
 img,
 embed,
 video,
+iframe,
 object {
   max-width: 100%;
 }
+
+iframe {
+  border: none;
+  border-radius: 8px;
+}
+
 
 /* tap targets: */
 nav a,
