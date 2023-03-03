@@ -21,6 +21,32 @@
 }
 
 .mail-container {
+  padding-block: 1em;
+  display: grid;
+  grid-template-columns: 2em 1fr 2em;
   grid-column: 3/5;
-  grid-row: 2;
+  grid-row: 2/4;
+  background-color: rgb(235 235 235);
+}
+
+.mail-container * {
+  grid-column: 2;
+}
+
+.details-mail-subject {
+  font-weight: 100;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.details-mail-folder {
+  font-size: 0.4em;
+  background-color: rgb(184, 177, 177);
+  padding: 0.3em;
+
+  border-radius: 0.6em;
+}
+.details-mail-from {
+  font-weight: 700;
 }

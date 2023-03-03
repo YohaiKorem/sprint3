@@ -14,10 +14,14 @@ export default {
      </RouterLink>
 
   <MailFolderList/>
+  
   <div class="mail-container">
-    <h1>{{mail.subject}}</h1> <span>{{mail.folder}}</span>
-    <h3>{{mail.from}}</h3> <span>{{mail.to}}</span>
-    <p>{{mail.body}}</p>
+    <h1 class="details-mail-subject">{{mail.subject}}
+       <span class="details-mail-folder">{{mail.folder}}</span>
+      </h1> 
+    <h4 class="details-mail-from">{{mail.from}}    <div class="details-mail-to">to {{mail.to}}</div>
+</h4>
+    <p class="details-mail-body">{{mail.body}}</p>
     <div class="btns-container">
       <button class="btn-reply">Reply</button>
       <button class="btn-forward">Forward</button>
