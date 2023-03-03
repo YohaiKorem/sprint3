@@ -12,9 +12,9 @@ export default {
       <li @click="setFolder('trash')"><div class="inside-folder-item-container">Trash<img class="icon" src="assets/img/mailImg/icons/trash.png"></div> </li> 
       <li @click="setFolder('sent')"><div class="inside-folder-item-container">Sent<img class="icon" src="assets/img/mailImg/icons/sent.png"></div></li> 
       <li @click="setFolder('important')"><div class="inside-folder-item-container">Important<img class="icon" src="assets/img/mailImg/icons/important.svg"></div></li> 
-      <li @click="setFolder('spam')"><div class="inside-folder-item-container">Spam<img class="spam-icon" src="assets/img/mailImg/icons/spam.png" alt=""></div> </li>
+      <li @click="setFolder('spam')"><div class="inside-folder-item-container">Spam<img class="spam-icon" src="assets/img/mailImg/icons/spam.svg" alt=""></div> </li>
       <li @click="setFolder('drafts')"><div class="inside-folder-item-container">Drafts<img class="icon" src="assets/img/mailImg/icons/draft.png"></div></li>
-      <li @click="setFolder('starred')"><div class="inside-folder-item-container">Starred<img class="icon" src="assets/img/mailImg/icons/star.png"></div> </li>
+      <li @click="setFolder('starred')"><div class="inside-folder-item-container">Starred <div class="star-inside-folder-list">★</div></div> </li>
     </ul>
   </aside>
     `,

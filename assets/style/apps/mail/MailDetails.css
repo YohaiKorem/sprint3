@@ -10,6 +10,11 @@
   column-gap: 1.25em;
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
 }
+.mail-details .mail-folder-list {
+  grid-row: 2;
+  align-self: self-start;
+  font-size: 1.2em;
+}
 
 .mail-details a {
   grid-column: 2;

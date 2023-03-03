@@ -2,6 +2,7 @@ aside.mail-folder-list {
   grid-column: 2;
   grid-row: 3;
   width: 100%;
+  min-height: 50%;
 }
 
 .folder-list {
@@ -9,6 +10,7 @@ aside.mail-folder-list {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .folder-list li {
   cursor: pointer;
@@ -31,4 +33,9 @@ div.inside-folder-item-container {
 
 .spam-icon {
   width: 20px;
+}
+
+.folder-list .inside-folder-item-container .star-inside-folder-list {
+  color: white;
+  font-size: 1.2em;
 }
