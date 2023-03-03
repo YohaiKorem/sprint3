@@ -12,10 +12,10 @@ export default {
           <input type="text" ref="todos" @input="saveTodoList" placeholder="Enter comma seperated list..." v-show="type === 'NoteTodo'" @focus="onFocus" />
         </form>
         <div class="types-wrapper flex justify-evenly" v-show="!isWideMode">
-          <img class="item btn-text" @click="changeType('NoteTxt')" src="../../../assets/img/keep/text.svg" />
-          <img class="item btn-img" @click="changeType('NoteImg')" src="../../../assets/img/keep/image.svg" />
-          <img class="item btn-video" @click="changeType('NoteVideo')" src="../../../assets/img/keep/video.svg" />
-          <img class="item btn-todo" @click="changeType('NoteTodo')" src="../../../assets/img/keep/todo.svg" />
+          <img class="item btn-text" @click="changeType('NoteTxt')" src="assets/img/keep/text.svg" />
+          <img class="item btn-img" @click="changeType('NoteImg')" src="assets/img/keep/image.svg" />
+          <img class="item btn-video" @click="changeType('NoteVideo')" src="assets/img/keep/video.svg" />
+          <img class="item btn-todo" @click="changeType('NoteTodo')" src="assets/img/keep/todo.svg" />
         </div>
         <div class="tool-bar flex align-center justify-between" v-show="isWideMode">
           <article class="toolbox flex justify-center">
@@ -41,7 +41,10 @@ export default {
   methods: {
     changeType(type) {
       this.type = type
-      this.note = noteService.getEmptyNote(this.note.info || undefined, this.type)
+      this.note = noteService.getEmptyNote(
+        this.note.info || undefined,
+        this.type
+      )
     },
 
     save() {
@@ -51,16 +54,17 @@ export default {
     },
 
     updateImgUrl(ev) {
-      const url = noteService.createImg(ev)
-        .then(url => this.note.info.imgUrl = url)
+      const url = noteService
+        .createImg(ev)
+        .then((url) => (this.note.info.imgUrl = url))
     },
 
     saveTodoList(ev) {
       let list = ev.target.value.split(', ')
-      list = list.map(item => {
+      list = list.map((item) => {
         return {
           txt: item,
-          isDone: false
+          isDone: false,
         }
       })
       this.note.info.list = list
@@ -71,11 +75,14 @@ export default {
     },
 
     updateColor(color) {
-      this.note.style.backgroundColor = color;
+      this.note.style.backgroundColor = color
     },
 
     closeColorPicker(event) {
-      if (this.showColorPicker && !this.$refs.colorPicker.$el.contains(event.target)) {
+      if (
+        this.showColorPicker &&
+        !this.$refs.colorPicker.$el.contains(event.target)
+      ) {
         this.showColorPicker = false
       }
     },
@@ -85,13 +92,18 @@ export default {
     },
 
     closeWideMode(event) {
-      if (this.isWideMode && !this.$refs.addNoteContainer.contains(event.target)) {
+      if (
+        this.isWideMode &&
+        !this.$refs.addNoteContainer.contains(event.target)
+      ) {
         this.isWideMode = false
-        if (this.note.info.title
-          || this.note.info.txt
-          || this.note.info.imgUrl
-          || this.note.info.videoUrl
-          || this.note.info.list) {
+        if (
+          this.note.info.title ||
+          this.note.info.txt ||
+          this.note.info.imgUrl ||
+          this.note.info.videoUrl ||
+          this.note.info.list
+        ) {
           this.save()
         }
       }
@@ -103,7 +115,7 @@ export default {
       return {
         backgroundColor: this.note.style.backgroundColor,
       }
-    }
+    },
   },
 
   mounted() {
@@ -124,5 +136,4 @@ export default {
   },
 
   emits: ['saveNote'],
-
 }
