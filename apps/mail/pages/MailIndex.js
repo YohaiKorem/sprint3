@@ -30,10 +30,10 @@ export default {
 
 </div>
   <MailFolderList @setFolder="setFolder"/>
-    <MailFilter @filter="setCriteria"/>
+    <MailFilter  @filter="setCriteria"/>
     <!-- <button @click="removeForEver" class="btn-delete-forever">delete forever</button> -->
     <MailList :mails="filteredMails"/> 
-        
+        <div @click="toggleMenu" v-if="isMenuOpen" class="modal-overlay"></div>
       </section>
       <router-view />
 `,
@@ -43,6 +43,7 @@ export default {
       criteria: {},
       folder: 'inbox',
       unreadMailsCount: 0,
+      isMenuOpen: false,
     }
   },
   created() {
@@ -55,6 +56,9 @@ export default {
     eventBusService.on('update', (mail) => {
       // console.log(this.folder)
       mailService.save(mail).then(() => this.render())
+    })
+    eventBusService.on('toggleMenu', (isMenuOpen) => {
+      this.isMenuOpen = isMenuOpen
     })
   },
   methods: {
@@ -95,9 +99,7 @@ export default {
     render() {
       mailService.query(this.folder).then((mails) => (this.mails = mails))
     },
-    test() {
-      console.log(this.unreadMailsCount)
-    },
+    openMenu() {},
   },
   computed: {
     filteredMails() {

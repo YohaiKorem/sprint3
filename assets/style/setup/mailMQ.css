@@ -33,7 +33,9 @@
   .mail-filter {
     grid-row: 1;
     grid-column: 2;
+    padding-inline: 1em;
     width: 100%;
+    position: fixed;
   }
 
   .mail-filter input {
@@ -42,12 +44,14 @@
   }
 
   .hidden-nav-btn {
+    display: block;
     right: 4em;
     top: 8.75em;
     position: fixed;
     display: block;
     background-color: inherit;
     border: 0;
+    z-index: 1;
   }
 
   .bar {
@@ -55,6 +59,28 @@
     height: 5px;
     background-color: var(--mail-font-clr1);
     margin: 6px 0;
+  }
+  .modal-overlay {
+    cursor: auto;
+    display: block;
+    opacity: 0.5;
+
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    background-color: #000;
+    transition: all 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .hidden-nav-btn.open {
+    display: none;
   }
 
   /* MailList */
@@ -97,7 +123,7 @@
     transform: translateX(-110%);
   }
 
-  aside.mail-folder-list {
+  /* aside.mail-folder-list {
     position: fixed;
     top: 0;
     transform: translateX(0);
@@ -107,7 +133,7 @@
     width: 80%;
     opacity: 1;
     flex-direction: column;
-  }
+  } */
 
   ul {
     margin-block-start: 0;

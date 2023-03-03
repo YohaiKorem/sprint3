@@ -4,6 +4,11 @@ import { mailService } from '../services/mail.service.js'
 export default {
   name: 'MailFolderList',
   template: `
+   <button  :class="isMenuOpen ? 'open ' + 'hidden-nav-btn' : 'hidden-nav-btn'" @click="openMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
   <aside class="mail-folder-list">
     <ul class="clean-list folder-list">
       <li @click="setFolder('inbox')"><div class="inside-folder-item-container">
@@ -45,12 +50,20 @@ Important
     return {
       folder: '',
       unreadMailsCount: null,
+      isMenuOpen: false,
     }
   },
+  created() {},
   methods: {
     setFolder(folder) {
       this.folder = folder
       this.$emit('setFolder', folder)
+    },
+  },
+  methods: {
+    openMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+      eventBusService.emit('toggleMenu', this.isMenuOpen)
     },
   },
   // created() {

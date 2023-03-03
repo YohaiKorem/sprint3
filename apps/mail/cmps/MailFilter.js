@@ -3,15 +3,9 @@ export default {
   template: `
     <section class="mail-filter">
         <input 
-        
             v-model="criteria.txt"
             placeholder="Search"
-            type="text" >  <button  class="hidden-nav-btn" @click="openMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </button>
-
+            type="text" > 
        </section>
 `,
   data() {
@@ -25,9 +19,7 @@ export default {
       },
     }
   },
-  methods: {
-    openMenu() {},
-  },
+
   watch: {
     criteria: {
       handler() {
