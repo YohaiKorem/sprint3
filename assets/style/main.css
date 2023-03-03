@@ -35,3 +35,4 @@
 @import 'apps/mail/MailIndex.css';
 @import 'apps/mail/MailPreview.css';
 @import 'apps/mail/MailDetails.css';
+@import 'setup/mailMQ.css';

@@ -13,3 +13,7 @@
   border-radius: 1em;
   border: 0;
 }
+
+.hidden-nav-btn {
+  display: none;
+}

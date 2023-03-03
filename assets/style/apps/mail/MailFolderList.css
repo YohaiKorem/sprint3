@@ -20,21 +20,19 @@ aside.mail-folder-list {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-inline-start: 3em;
+  padding-inline-start: 2em;
   opacity: 1.5;
 }
 
-.inside-folder-item-container {
+div.inside-folder-item-container {
+  text-align: left;
+  color: white;
   width: 50%;
   display: flex;
-  justify-content: space-between;
 }
 
-div.inside-folder-item-container {
-  color: white;
-}
-
-div.inside-folder-item-container * {
+div.inside-folder-item-container > * {
+  margin-inline-start: 1em;
 }
 
 .spam-icon {
@@ -44,9 +42,16 @@ div.inside-folder-item-container * {
 .folder-list .inside-folder-item-container .star-inside-folder-list {
   color: white;
   font-size: 1.2em;
+  display: inline-block;
 }
-
+div.important-icon-container {
+  align-self: center;
+  display: inline-block;
+  text-align: center;
+  padding-block: 0;
+}
 .important-icon {
+  width: 100%;
   fill: white;
 }
 .sent-icon {

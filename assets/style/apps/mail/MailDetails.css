@@ -31,7 +31,7 @@
   grid-template-columns: 2em 1fr 2em;
   grid-column: 3/5;
   grid-row: 2/4;
-  background-color: rgb(235 235 235);
+  background-color: rgb(255, 255, 255);
 }
 
 .mail-container * {
@@ -48,10 +48,25 @@
 .details-mail-folder {
   font-size: 0.4em;
   background-color: rgb(184, 177, 177);
-  padding: 0.3em;
-
+  padding: 0.5em;
+  margin-inline-start: 0.5em;
   border-radius: 0.6em;
 }
 .details-mail-from {
   font-weight: 700;
+  font-size: 1.5em;
+}
+.details-mail-to {
+  font-weight: 300;
+  font-size: 0.5em;
+}
+
+.mail-details .btns-container button {
+  width: 10%;
+  border-radius: 2em;
+  color: rgb(72, 73, 73);
+  font-weight: 600;
+}
+.mail-details .btns-container button:hover {
+  background-color: rgb(186, 186, 186);
 }

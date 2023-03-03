@@ -1,0 +1,137 @@
+@media (max-width: 500px) {
+  .mail-list .mail-item {
+    background-color: white;
+    border-bottom: 0;
+    font-size: 0.5em;
+    padding-block: 0.5em;
+  }
+}
+
+@media (max-width: 800px) {
+  /* MailIndex */
+  .mail-index {
+    background-image: none;
+    grid-template-rows: 3em 1fr;
+    grid-template-columns: 1em 1fr 1em;
+  }
+
+  .compose-mail-link {
+    position: fixed;
+    bottom: 13%;
+    left: 10%;
+    z-index: 10;
+    opacity: 1;
+  }
+  button.compose-mail {
+    background-color: var(--mailclr1);
+    width: 9.375em;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  /* MailFIlter */
+
+  .mail-filter {
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+  }
+
+  .mail-filter input {
+    background-color: var(--mailclr1);
+    font-size: 1em;
+  }
+
+  .hidden-nav-btn {
+    right: 4em;
+    top: 8.75em;
+    position: fixed;
+    display: block;
+    background-color: inherit;
+    border: 0;
+  }
+
+  .bar {
+    width: 35px;
+    height: 5px;
+    background-color: var(--mail-font-clr1);
+    margin: 6px 0;
+  }
+
+  /* MailList */
+
+  .mail-list {
+    grid-column: 2;
+  }
+
+  .mail-list .mail-item {
+    background-color: white;
+    border-bottom: 0;
+    font-size: 0.75em;
+    padding-block: 1em;
+  }
+  .mail-item .btns-container :not(.star-icon) {
+    display: none;
+  }
+
+  .hidden-icons-container {
+    display: none;
+  }
+
+  .unread,
+  .read {
+    background-color: inherit;
+  }
+
+  .unread {
+    font-weight: 900;
+    font-size: 110%;
+  }
+
+  .read {
+    font-weight: 400;
+  }
+
+  /* MailFolderList */
+
+  aside.mail-folder-list {
+    transform: translateX(-110%);
+  }
+
+  aside.mail-folder-list {
+    position: fixed;
+    top: 0;
+    transform: translateX(0);
+    z-index: 10;
+    background-color: var(--mailclr1);
+    height: 100%;
+    width: 80%;
+    opacity: 1;
+    flex-direction: column;
+  }
+
+  ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+  }
+
+  .folder-list li {
+    text-align: left;
+    padding-inline-start: 0;
+  }
+  div.inside-folder-item-container {
+    display: flex;
+    color: var(--mailclr2);
+  }
+  div.inside-folder-item-container > * {
+    margin-inline: 0.3em;
+  }
+  ul.folder-list {
+    width: 50%;
+    justify-content: start;
+    font-size: 1.5em;
+  }
+  .folder-list .inside-folder-item-container .star-inside-folder-list {
+    font-size: 1.1em;
+  }
+}
