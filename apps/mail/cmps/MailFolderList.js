@@ -4,17 +4,19 @@ import { mailService } from '../services/mail.service.js'
 export default {
   name: 'MailFolderList',
   template: `
-  <h1>{{folder}}</h1>
-      <ul class="clean-list folder-list">
-        <li @click="setFolder('inbox')">Inbox<img class="icon" src="assets/img/mailImg/icons/inbox.png"></li> 
-        <span>{{unreadMailsCount}}</span>
-        <li @click="setFolder('trash')">Trash<img class="icon" src="assets/img/mailImg/icons/trash.png"></li> 
-        <li @click="setFolder('sent')">Sent<img class="icon" src="assets/img/mailImg/icons/sent.png"></li> 
-        <li @click="setFolder('important')">Important<img class="icon" src="assets/img/mailImg/icons/important.png"></li> 
-        <li @click="setFolder('spam')">Spam<img class="spam-icon" src="assets/img/mailImg/icons/spam.png" alt=""> </li>
-        <li @click="setFolder('drafts')">Drafts<img class="icon" src="assets/img/mailImg/icons/draft.png"></li>
-        <li @click="setFolder('starred')">Starred<img class="icon" src="assets/img/mailImg/icons/star.png"> </li>
-      </ul>
+  <aside class="mail-folder-list">
+    <h1>{{folder}}</h1>
+    <ul class="clean-list folder-list">
+      <li @click="setFolder('inbox')"><div class="inside-folder-item-container">Inbox<img class="icon" src="assets/img/mailImg/icons/inbox.png"></div> </li> 
+      <span>{{unreadMailsCount}}</span>
+      <li @click="setFolder('trash')"><div class="inside-folder-item-container">Trash<img class="icon" src="assets/img/mailImg/icons/trash.png"></div> </li> 
+      <li @click="setFolder('sent')"><div class="inside-folder-item-container">Sent<img class="icon" src="assets/img/mailImg/icons/sent.png"></div></li> 
+      <li @click="setFolder('important')"><div class="inside-folder-item-container">Important<img class="icon" src="assets/img/mailImg/icons/important.svg"></div></li> 
+      <li @click="setFolder('spam')"><div class="inside-folder-item-container">Spam<img class="spam-icon" src="assets/img/mailImg/icons/spam.png" alt=""></div> </li>
+      <li @click="setFolder('drafts')"><div class="inside-folder-item-container">Drafts<img class="icon" src="assets/img/mailImg/icons/draft.png"></div></li>
+      <li @click="setFolder('starred')"><div class="inside-folder-item-container">Starred<img class="icon" src="assets/img/mailImg/icons/star.png"></div> </li>
+    </ul>
+  </aside>
     `,
   data() {
     return {

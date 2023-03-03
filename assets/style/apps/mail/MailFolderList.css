@@ -1,4 +1,4 @@
-.mail-index > aside.folder-list-container {
+aside.mail-folder-list {
   grid-column: 2;
   grid-row: 3;
   width: 100%;
@@ -11,14 +11,22 @@
   flex-direction: column;
 }
 .folder-list li {
-  color: white;
   cursor: pointer;
   font-size: 1em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-inline-start: 3em;
   opacity: 1.5;
+}
+
+.inside-folder-item-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.inside-folder-item-container {
+  color: white;
 }
 
 .spam-icon {

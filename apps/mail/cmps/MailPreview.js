@@ -11,8 +11,7 @@ export default {
     <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
     <div @click="star" class="star-icon icon">★</div>
     <div @click="important" class="important-icon-container" >
-      <img class="important-icon icon"
-       src="assets/img/mailImg/icons/important.png">
+    <img class="icon inportant-icon" src="assets/img/mailImg/icons/important.png" alt="">
 </div>
     
   </div>

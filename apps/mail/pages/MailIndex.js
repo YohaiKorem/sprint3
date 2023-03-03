@@ -27,9 +27,7 @@ export default {
   <button @click="clearStorage">clear</button>
 </div>
 </div>
-<aside class="folder-list-container">
   <MailFolderList @setFolder="setFolder"/>
-</aside>
     <MailFilter @filter="setCriteria"/>
     <button @click="removeForEver" class="btn-delete-forever">delete forever</button>
     <MailList :mails="filteredMails"/> 

@@ -17,9 +17,11 @@
 }
 
 .important .btns-container .important-icon {
+  /* fill: black; */
   background-color: var(--mailclr3);
   opacity: 1;
 }
+
 .btns-container {
   display: flex;
   justify-content: space-around;
