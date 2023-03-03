@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
         <header class="app-header flex align-center justify-between">
             <router-link class="flex" to="/">
                 <img width="28" src="../assets/img/favicon.png" />
