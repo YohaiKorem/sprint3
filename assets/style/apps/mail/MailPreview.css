@@ -17,8 +17,8 @@
 }
 
 .important .btns-container .important-icon {
-  /* fill: black; */
-  background-color: var(--mailclr3);
+  fill: var(--mailclr3);
+  color: var(--mailclr3);
   opacity: 1;
 }
 
@@ -57,6 +57,8 @@
 .hidden-icons-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 20%;
 }
 .hidden-icons-container > {
 }

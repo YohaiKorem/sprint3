@@ -1,7 +1,8 @@
 .mail-list {
   justify-self: center;
   overflow-y: scroll;
-  max-height: 500px;
+  height: 100%;
+  grid-row: 3;
   grid-column: 3/5;
 }
 

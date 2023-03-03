@@ -29,7 +29,7 @@ export default {
 </div>
   <MailFolderList @setFolder="setFolder"/>
     <MailFilter @filter="setCriteria"/>
-    <button @click="removeForEver" class="btn-delete-forever">delete forever</button>
+    <!-- <button @click="removeForEver" class="btn-delete-forever">delete forever</button> -->
     <MailList :mails="filteredMails"/> 
         
       </section>

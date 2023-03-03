@@ -4,11 +4,11 @@
   --clr3: rgb(133, 133, 133);
   --clr4: #5f6368;
   --clr5: rgb(0, 0, 0);
-  --google-main-color: #4285F4;
+  --google-main-color: #4285f4;
 
   /* Mail */
   --mailclr1: rgb(226, 238, 255);
-  --mailclr2: rgb(207 219 232);
+  --mailclr2: rgb(177, 178, 180);
   --mailclr3: rgb(247, 202, 77);
   --mailclr4: rgb(194 219 255);
   --mail-font-clr1: rgb(32 33 36);
@@ -17,5 +17,5 @@
   /* Note: */
   --border-color: #e0e0e0;
   --text-color: #202124;
-  --sidebar-color: #FEEFC3;
+  --sidebar-color: #feefc3;
 }

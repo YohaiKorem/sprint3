@@ -1,7 +1,7 @@
 .mail-index {
   display: grid;
-  /* place-items: center; */
-  grid-template-rows: 3em 1fr;
+  height: calc(76vh - 2rem);
+  grid-template-rows: 1em 3em 1fr;
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
   row-gap: 1.25em;
   column-gap: 1.25em;

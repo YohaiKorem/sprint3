@@ -1,7 +1,9 @@
 aside.mail-folder-list {
+  top: 20em;
+  position: fixed;
   grid-column: 2;
   grid-row: 3;
-  width: 100%;
+  width: 30%;
   min-height: 50%;
 }
 
@@ -10,13 +12,14 @@ aside.mail-folder-list {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .folder-list li {
   cursor: pointer;
   font-size: 1em;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   padding-inline-start: 3em;
   opacity: 1.5;
 }
@@ -31,6 +34,9 @@ div.inside-folder-item-container {
   color: white;
 }
 
+div.inside-folder-item-container * {
+}
+
 .spam-icon {
   width: 20px;
 }
@@ -38,4 +44,11 @@ div.inside-folder-item-container {
 .folder-list .inside-folder-item-container .star-inside-folder-list {
   color: white;
   font-size: 1.2em;
+}
+
+.important-icon {
+  fill: white;
+}
+.sent-icon {
+  color: white;
 }
