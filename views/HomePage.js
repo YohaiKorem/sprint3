@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
         <section class="home-page">
             <div class="slogen-wrapper flex flex-column flex-start">
                 <h1>AppSus - Two essential services, one powerful app</h1>
@@ -9,7 +9,7 @@ export default {
                     <RouterLink class="btn-google" :to="'/keep'">Start with Keep</RouterLink>
                 </div>
             </div>
-            <img src="../assets/img/googleHomePage.webp" />
+            <img src="assets/img/googleHomePage.webp" />
         </section>
     `,
 }
