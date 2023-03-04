@@ -5,18 +5,21 @@
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
   row-gap: 1.25em;
   column-gap: 1.25em;
+  min-height: calc(76vh - 2rem);
   background-image: url(/assets/img/mailImg/bgcImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .mail-index * {
   color: var(--mail-font-clr1);
 }
-.mail-index > * {
+
+.mail-index>* {
   opacity: 0.8;
 }
 
-.mail-index > .full {
+.mail-index>.full {
   grid-column: 2/5;
 }
 
@@ -46,10 +49,12 @@
   width: 50%;
   background-color: #fff;
 }
+
 .mail-index button.compose-mail img {
   padding: 0;
   margin: 0;
 }
+
 .btns-container {
   grid-column: 1;
 }

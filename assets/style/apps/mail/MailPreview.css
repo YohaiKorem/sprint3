@@ -1,13 +1,16 @@
 .mail-preview:hover,
-.mail-preview > :hover {
+.mail-preview> :hover {
   cursor: pointer;
 }
+
 .starred .btns-container .star-icon {
   color: var(--mailclr3);
 }
+
 .read {
   background-color: var(--mailclr2);
 }
+
 .unread {
   background-color: var(--mailclr1);
 }
@@ -20,6 +23,7 @@
   background-color: var(--mailclr3);
   opacity: 1;
 }
+
 .btns-container {
   display: flex;
   justify-content: space-around;
@@ -36,7 +40,7 @@
   grid-template-columns: 0.5fr repeat(3, 1fr);
   grid-template-rows: 1fr;
   align-items: center;
-  padding-inline-start: 1em;
+  padding-inline: 1em;
   align-items: center;
 }
 
@@ -52,18 +56,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .hidden-icons-container {
   display: flex;
   align-items: center;
 }
-.hidden-icons-container > {
-}
+
+.hidden-icons-container> {}
 
 .hidden-icons-container,
 .mail-timestamp {
   grid-column: 4;
   justify-self: end;
 }
+
 .icon,
 .btn-remove .icon {
   width: 20px;

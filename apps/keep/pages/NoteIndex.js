@@ -12,8 +12,8 @@ export default {
       <section class="note-index">
         <section class="flex flex-column align-center gap">
           <NoteFilter @filter="setFilterBy"/>
-          <AddNote @saveNote="onSaveNote"/>
-          <button class="btn-empty clean-btn" v-if="isTrash" @click="onEmptyTrash">Empty trash</button>
+          <AddNote v-show="!isTrash" @saveNote="onSaveNote"/>
+          <button class="btn-empty clean-btn" v-show="isTrash" @click="onEmptyTrash">Empty trash</button>
           <NoteList :notes="filteredNotes" v-if="notes" @removeNote="onRemoveNote"/>
         </section>
         <aside class="sidebar flex flex-column"> 
@@ -93,19 +93,19 @@ export default {
 
     onEmptyTrash() {
       let notes = this.notes.filter(note => note.isRemoved)
-      if (!notes) return
+      if (!notes.length) return
       confirm('Are you sure you want to empty all notes in trash?')
+
       notes.forEach(note => {
         this.onRemovePermamentlyNote(note.id)
       })
     },
+
   },
 
   computed: {
     filteredNotes() {
       const regex = new RegExp(this.filterBy.txt, 'i')
-      console.log('istrash', this.isTrash)
-      console.log('filter:', this.notes.filter(note => note.isRemoved === this.isTrash && regex.test(note.info.txt) || regex.test(note.info.title)))
       return this.notes.filter(note => note.isRemoved === this.isTrash && (regex.test(note.info.txt) || regex.test(note.info.title)))
     }
   },
