@@ -18,22 +18,24 @@ export default {
    <img class="icon pencil-icon" src="assets/img/mailImg/icons/pencil.png">
    Compose</button>  
      </RouterLink>
-
-  <!-- <div class="input-heading-container full">
+     
+     <!-- <div class="input-heading-container full">
 <div class="btns-container">
   <h1>Your inbox</h1>
   <button @click="test">test</button>
   <button @click="clearStorage">clear</button>
 </div> -->
 
+<section v-if="!hasMails"  class="no-mails-modal">There are no mails in the {{folder}} folder</section>
 
 
-</div>
+
+<!-- </div> -->
   <MailFolderList @setFolder="setFolder"/>
     <MailFilter  @filter="setCriteria"/>
     <!-- <button @click="removeForEver" class="btn-delete-forever">delete forever</button> -->
     <MailList :mails="filteredMails"/> 
-        <div @click="toggleMenu" v-if="isMenuOpen" class="modal-overlay"></div>
+        <div @click="toggleMenu" v-if="isMenuOpen" class="modal-backdrop"></div>
       </section>
       <router-view />
 `,
@@ -44,19 +46,15 @@ export default {
       folder: 'inbox',
       unreadMailsCount: 0,
       isMenuOpen: false,
+      hasMails: null,
     }
   },
   created() {
-    mailService.query().then((mails) => {
-      this.mails = mails
-      mails.forEach((mail) => {
-        if (!mail.isRead) this.unreadMailsCount++
+    this.render(),
+      eventBusService.on('update', (mail) => {
+        // console.log(this.folder)
+        mailService.save(mail).then(() => this.render())
       })
-    })
-    eventBusService.on('update', (mail) => {
-      // console.log(this.folder)
-      mailService.save(mail).then(() => this.render())
-    })
     eventBusService.on('toggleMenu', (isMenuOpen) => {
       this.isMenuOpen = isMenuOpen
     })
@@ -97,9 +95,22 @@ export default {
       this.criteria = criteria
     },
     render() {
-      mailService.query(this.folder).then((mails) => (this.mails = mails))
+      mailService.query(this.folder).then((mails) => {
+        !mails.length ? (this.hasMails = null) : (this.hasMails = true)
+        let count = 0
+        mails.forEach((mail) => {
+          if (!mail.isRead) count++
+        })
+
+        this.unreadMailsCount = count
+        eventBusService.emit('changeReadCount', this.unreadMailsCount)
+        this.mails = mails
+      })
     },
-    openMenu() {},
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+      eventBusService.emit('toggleMenu', this.isMenuOpen)
+    },
   },
   computed: {
     filteredMails() {

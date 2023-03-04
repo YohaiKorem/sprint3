@@ -30,6 +30,7 @@
 
 .mail-index a {
   grid-column: 2;
+  grid-row: 2;
 }
 
 button.compose-mail {
@@ -37,7 +38,6 @@ button.compose-mail {
   justify-content: space-around;
   font-size: 1em;
   align-items: center;
-  grid-row: 2;
   border: 0;
   border-radius: 1em;
   text-align: center;
@@ -52,4 +52,13 @@ button.compose-mail img {
 }
 .btns-container {
   grid-column: 1;
+}
+
+.no-mails-modal {
+  text-align: center;
+  font-size: 3em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

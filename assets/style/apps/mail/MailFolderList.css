@@ -14,7 +14,7 @@ aside.mail-folder-list {
   flex-direction: column;
   /* justify-content: space-between; */
 }
-.folder-list li {
+.folder-list li :not(:first-of-type) {
   cursor: pointer;
   font-size: 1em;
   display: flex;
@@ -22,6 +22,11 @@ aside.mail-folder-list {
   justify-content: space-around;
   padding-inline-start: 2em;
   opacity: 1.5;
+}
+
+.folder-list li:first-of-type {
+  font-size: 1em;
+  display: flex;
 }
 
 div.inside-folder-item-container {
@@ -56,4 +61,12 @@ div.important-icon-container {
 }
 .sent-icon {
   color: white;
+}
+span.unread-mails-count {
+  width: 5em;
+  color: white;
+  margin: 0;
+  padding: 0;
+  justify-self: start;
+  text-align: center;
 }
