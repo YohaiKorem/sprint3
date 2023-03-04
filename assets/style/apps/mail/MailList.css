@@ -2,6 +2,7 @@
   justify-self: center;
   overflow-y: scroll;
   height: 100%;
+  width: 100%;
   grid-row: 3;
   grid-column: 3/5;
 }
