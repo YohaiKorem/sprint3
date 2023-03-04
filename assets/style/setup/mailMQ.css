@@ -117,6 +117,40 @@
     font-weight: 400;
   }
 
+  /* MailPreview */
+
+  .mail-preview {
+    display: grid;
+    grid-template-columns: 0.5fr repeat(3, 1fr) 0.5fr;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    padding-inline-start: 1em;
+    align-items: center;
+  }
+
+  .mail-from {
+    font-size: 1.5em;
+    grid-column: 2/5;
+    grid-row: 1;
+  }
+
+  .mail-body {
+    grid-column: 2/5;
+    grid-row: 2;
+  }
+
+  .mail-timestamp {
+    grid-column: 5;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .mail-preview .btns-container {
+    justify-content: end;
+    grid-column: 5;
+    grid-row: 2/3;
+  }
+
   /* MailFolderList */
 
   aside.mail-folder-list {

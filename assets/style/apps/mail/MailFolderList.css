@@ -14,6 +14,11 @@ aside.mail-folder-list {
   flex-direction: column;
   /* justify-content: space-between; */
 }
+
+.folder-list li {
+  cursor: pointer;
+}
+
 .folder-list li :not(:first-of-type) {
   cursor: pointer;
   font-size: 1em;

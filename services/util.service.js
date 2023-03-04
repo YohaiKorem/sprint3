@@ -18,9 +18,7 @@ function getRandomDate(
   const timestamp = Math.floor(
     Math.random() * (maxValue - minValue + 1) + minValue
   )
-  let res = new Date(timestamp).toLocaleString('en-GB')
-  console.log(res)
-  return new Date(timestamp)
+  return timestamp
 }
 
 function makeId(length = 5) {

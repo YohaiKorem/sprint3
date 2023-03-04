@@ -67,6 +67,7 @@
 .mail-timestamp {
   grid-column: 4;
   justify-self: end;
+  padding-inline-end: 1em;
 }
 .icon,
 .btn-remove .icon {

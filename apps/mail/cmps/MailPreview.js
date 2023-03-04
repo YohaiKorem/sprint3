@@ -1,7 +1,7 @@
 import { mailService } from '../services/mail.service.js'
 import LongTxt from '../../../cmps/LongTxt.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
-
+import { utilService } from '../../../services/util.service.js'
 export default {
   name: 'MailPreview',
   props: ['mail'],
@@ -29,7 +29,10 @@ export default {
      <img :class="isRead +'-icon icon'" :src="'assets/img/mailImg/icons/'+isRead + '.png'">
      </div>
     </div>
-         <span v-if="!this.isHovered" class="mail-timestamp"> {{new Date(mail.sentAt).toLocaleString('en-GB')}}</span>
+         <span v-if="!this.isHovered" class="mail-timestamp">   
+       {{ this.date}}
+        </span>
+
         </article>
     `,
   data() {
@@ -38,6 +41,29 @@ export default {
     }
   },
   methods: {
+    clear() {
+      utilService.clearLocalStorage()
+    },
+    time() {
+      let date = new Date(this.mail.sentAt)
+      let month = date.getMonth()
+      let day = date.getUTCDate()
+      const monthName = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ]
+      console.log(monthName[month], day)
+    },
     editMail() {
       this.$router.push(`/mail/edit/${this.mail.id}`)
     },
@@ -89,6 +115,26 @@ export default {
     isImportant() {
       if (this.mail.isImportant) return 'important'
       else return ''
+    },
+    date() {
+      let date = new Date(this.mail.sentAt)
+      let month = date.getMonth()
+      let day = date.getUTCDate()
+      const monthName = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ]
+      return `${monthName[month]} ${day}`
     },
   },
 
