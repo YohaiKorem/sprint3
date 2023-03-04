@@ -168,15 +168,24 @@
     width: 100%;
     background-color: var(--mailclr2);
     text-align: center;
+    padding: 1em;
   }
 
-  span.unread-mails-count:before {
+  aside.open.mail-folder-list span.unread-mails-count:before {
     content: '';
-    width: 2em;
-    height: 2em;
-    background-color: aqua;
-    left: 1em;
-    background-image: url(../../img/mailImg/icons/unread.png);
+    width: 10%;
+    height: 2.5%;
+    border-radius: 1em;
+    text-align: center;
+    /* min-height: 1.5em; */
+    /* background-color: aqua; */
+    left: 10em;
+    background: url(/assets/img/mailImg/icons/unread.png) no-repeat 50% 30%
+      fixed;
+    /* padding: 1em; */
+    background-color: red;
+    padding: 15px;
+    background-size: contain;
     position: absolute;
   }
 }
