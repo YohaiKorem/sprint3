@@ -5,7 +5,7 @@ export default {
         <input 
             v-model="criteria.txt"
             placeholder="Search"
-            type="text" />
+            type="text" > 
        </section>
 `,
   data() {
@@ -19,6 +19,7 @@ export default {
       },
     }
   },
+
   watch: {
     criteria: {
       handler() {

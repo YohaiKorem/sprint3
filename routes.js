@@ -7,7 +7,7 @@ import NoteEdit from './apps/keep/cmps/NoteEdit.js'
 // MAIL
 import MailIndex from './apps/mail/pages/MailIndex.js'
 import MailEdit from './apps/mail/pages/MailEdit.js'
-import MailDetails from './apps/mail/cmps/MailDetails.js'
+import MailDetails from './apps/mail/pages/MailDetails.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -55,11 +55,11 @@ const routerOptions = {
           props: true,
           name: 'mail-edit',
         },
-        {
-          path: '/mail/edit/:mailId?',
-          component: MailEdit,
-        },
       ],
+    },
+    {
+      path: '/mail/edit/:mailId?',
+      component: MailDetails,
     },
     //  {
     //    path: '/mail/:mailId',

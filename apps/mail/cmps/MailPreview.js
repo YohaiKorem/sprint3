@@ -1,35 +1,38 @@
 import { mailService } from '../services/mail.service.js'
 import LongTxt from '../../../cmps/LongTxt.js'
 import { eventBusService } from '../../../services/event-bus.service.js'
-
+import { utilService } from '../../../services/util.service.js'
 export default {
   name: 'MailPreview',
   props: ['mail'],
   template: `
-    <article @click="editMail" @mouseout="hideIcons" @mouseover="showIcons" :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
+    <article @click.self="editMail" @mouseout="hideIcons" @mouseover="showIcons" :class="isRead + ' ' + isSelected + ' ' + isStarred + ' ' + isImportant + ' mail-preview'">
   <div class="btns-container">
-    <input @change="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
+    <input @change.stop="selectMail(mail.isSelected)"  v-model="mail.isSelected" type="checkbox">
     <div @click="star" class="star-icon icon">★</div>
     <div @click="important" class="important-icon-container" >
-      <img class="important-icon icon"
-       src="assets/img/mailImg/icons/important.png">
+    <img class="icon inportant-icon" src="assets/img/mailImg/icons/important.svg" alt="">
 </div>
     
   </div>
          <h2 class="mail-from">from: {{ mail.from }}</h2> 
          <p class="mail-body">{{mail.body}}</p>
-         <div v-if="isHovered"  class="hidden-icons-container">
-            <div @click="removeMail" class="btn-remove"> 
+         <div v-if="isHovered"   class="hidden-icons-container">
+          <div @click="archive" class="archive-btn">
+          <img src="assets/img/mailImg/icons/archive.svg" class="icon trash-icon">
+          </div>
+         
+         <div @click="removeMail" class="btn-remove"> 
               <img src="assets/img/mailImg/icons/trash.png" class="icon trash-icon">
      </div>
      <div @click="markAsRead" class="btn-readUnread">
      <img :class="isRead +'-icon icon'" :src="'assets/img/mailImg/icons/'+isRead + '.png'">
-
      </div>
-    
-    
     </div>
-         <span v-if="!this.isHovered" class="mail-timestamp"> {{new Date(mail.sentAt).toLocaleString('en-GB')}}</span>
+         <span v-if="!this.isHovered" class="mail-timestamp">   
+       {{ this.date}}
+        </span>
+
         </article>
     `,
   data() {
@@ -38,6 +41,29 @@ export default {
     }
   },
   methods: {
+    clear() {
+      utilService.clearLocalStorage()
+    },
+    time() {
+      let date = new Date(this.mail.sentAt)
+      let month = date.getMonth()
+      let day = date.getUTCDate()
+      const monthName = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ]
+      console.log(monthName[month], day)
+    },
     editMail() {
       this.$router.push(`/mail/edit/${this.mail.id}`)
     },
@@ -56,6 +82,10 @@ export default {
     },
     selectMail(isSelected) {
       this.$emit('selectMail', isSelected)
+      eventBusService.emit('update', this.mail)
+    },
+    archive() {
+      this.mail.folder = 'archive'
       eventBusService.emit('update', this.mail)
     },
     removeMail() {
@@ -85,6 +115,26 @@ export default {
     isImportant() {
       if (this.mail.isImportant) return 'important'
       else return ''
+    },
+    date() {
+      let date = new Date(this.mail.sentAt)
+      let month = date.getMonth()
+      let day = date.getUTCDate()
+      const monthName = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ]
+      return `${monthName[month]} ${day}`
     },
   },
 

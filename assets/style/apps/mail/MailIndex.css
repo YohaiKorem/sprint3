@@ -1,12 +1,13 @@
 .mail-index {
   display: grid;
-  /* place-items: center; */
-  grid-template-rows: 3em 1fr;
+  height: calc(76vh - 2rem);
+  grid-template-rows: 1em 3em 1fr;
   grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
   row-gap: 1.25em;
   column-gap: 1.25em;
   min-height: calc(76vh - 2rem);
   background-image: url(/assets/img/mailImg/bgcImg.jpg);
+  background-image: url(../../../img/mailImg/bgcImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -33,14 +34,14 @@
 
 .mail-index a {
   grid-column: 2;
+  grid-row: 2;
 }
 
-.mail-index button.compose-mail {
+button.compose-mail {
   display: flex;
   justify-content: space-around;
   font-size: 1em;
   align-items: center;
-  grid-row: 2;
   border: 0;
   border-radius: 1em;
   text-align: center;
@@ -49,12 +50,21 @@
   width: 50%;
   background-color: #fff;
 }
-
-.mail-index button.compose-mail img {
+button.compose-mail img {
   padding: 0;
   margin: 0;
 }
 
 .btns-container {
   grid-column: 1;
+}
+
+.no-mails-modal {
+  text-align: center;
+  font-size: 3em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
 }

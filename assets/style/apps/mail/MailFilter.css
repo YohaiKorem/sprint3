@@ -2,6 +2,9 @@
   display: flex;
   align-items: start;
   justify-content: center;
+  max-height: 2em;
+  grid-row: 2;
+  grid-column: 3/5;
 }
 
 .mail-filter input {
@@ -9,4 +12,8 @@
   padding: 1.5em;
   border-radius: 1em;
   border: 0;
+}
+
+.hidden-nav-btn {
+  display: none;
 }

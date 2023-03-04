@@ -58,7 +58,7 @@ function getEmptyMail(
     isStarred: false,
     isImportant: false,
     folder: 'inbox',
-    sentAt: null,
+    sentAt,
     removedAt: null,
     from,
     to,
@@ -70,31 +70,55 @@ function _createMails() {
   let mails = utilService.loadFromStorage(MAIL_KEY)
   if (!mails || !mails.length) {
     mails = []
+
     mails.push(
       _createMail(
-        'me',
-        'you',
-        'a subject',
-        'the mail content',
+        'Yaron Biton',
+        'Yohai Korem',
+        'Sprint3',
+        'please teach me how to use vue amazingly like you',
         utilService.getRandomDate()
       )
     )
-    mails.push(_createMail('yohai', 'noa'))
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
-    mails.push(_createMail())
+    mails.push(
+      _createMail(
+        'Sharon Frenkel',
+        'Ori Krispel',
+        'Sprint3',
+        'You are a CSS genius, you > Kevin Powell',
+        utilService.getRandomDate()
+      )
+    )
+    mails.push(
+      _createMail(
+        'Yuval Schmukler',
+        'Yohai & Ori',
+        'Sprint3',
+        'You guys were my favourite team all along',
+        utilService.getRandomDate()
+      )
+    )
+    mails.push(
+      _createMail(
+        'Tripadvisor',
+        loggedinUser.email,
+        'Take another look:Coding Academy',
+        'We make it easy, open + see',
+        utilService.getRandomDate()
+      )
+    )
+    for (let i = 0; i < 120; i++) {
+      mails.push(
+        _createMail(
+          'LoremIpsumDaily',
+          loggedinUser.email,
+          'Your daily dose of dolor',
+          utilService.makeLorem(),
+          utilService.getRandomDate()
+        )
+      )
+    }
+
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
@@ -103,9 +127,10 @@ function _createMail(
   from = loggedinUser.email,
   to = 'myBestFriend@gmail.com',
   subject = 'sprint3',
-  body = utilService.makeLorem()
+  body = utilService.makeLorem(),
+  sentAt = null
 ) {
-  const mail = getEmptyMail(from, to, subject, body)
+  const mail = getEmptyMail(from, to, subject, body, sentAt)
   mail.id = utilService.makeId()
   return mail
 }

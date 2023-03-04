@@ -9,10 +9,16 @@ export const utilService = {
   getRandomDate,
 }
 
-function getRandomDate() {
-  const maxDate = Date.now()
-  const timestamp = Math.floor(Math.random() * maxDate)
-  return new Date(timestamp)
+function getRandomDate(
+  startDate = new Date(2020, 0, 1),
+  endDate = new Date(Date.now())
+) {
+  const minValue = startDate.getTime()
+  const maxValue = endDate.getTime()
+  const timestamp = Math.floor(
+    Math.random() * (maxValue - minValue + 1) + minValue
+  )
+  return timestamp
 }
 
 function makeId(length = 5) {

@@ -1,0 +1,72 @@
+.mail-details {
+  padding-block: 1em;
+  background-image: url(/assets/img/mailImg/bgcImg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(76vh - 2rem);
+  display: grid;
+  grid-template-rows: 3em 1fr;
+  row-gap: 1.25em;
+  column-gap: 1.25em;
+  grid-template-columns: 1.6rem 0.5fr 1fr 0.25fr 1.6rem;
+}
+.mail-details .mail-folder-list {
+  grid-row: 2;
+  align-self: self-start;
+  font-size: 1.2em;
+}
+
+.mail-details a {
+  grid-column: 2;
+}
+
+.mail-details .mail-filter {
+  grid-row: 1;
+  grid-column: 3/5;
+}
+
+.mail-container {
+  padding-block: 1em;
+  display: grid;
+  grid-template-columns: 2em 1fr 2em;
+  grid-column: 3/5;
+  grid-row: 2/4;
+  background-color: rgb(255, 255, 255);
+}
+
+.mail-container * {
+  grid-column: 2;
+}
+
+.details-mail-subject {
+  font-weight: 100;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.details-mail-folder {
+  font-size: 0.4em;
+  background-color: rgb(184, 177, 177);
+  padding: 0.5em;
+  margin-inline-start: 0.5em;
+  border-radius: 0.6em;
+}
+.details-mail-from {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+.details-mail-to {
+  font-weight: 300;
+  font-size: 0.5em;
+}
+
+.mail-details .btns-container button {
+  width: 10%;
+  border-radius: 2em;
+  color: rgb(72, 73, 73);
+  font-weight: 600;
+}
+.mail-details .btns-container button:hover {
+  background-color: rgb(186, 186, 186);
+}
