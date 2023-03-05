@@ -42,7 +42,7 @@ export default {
       noteService.get(noteId)
         .then(note => {
           if (note.isRemoved) {
-            this.onRemovePermamentlyNote(noteId)
+            this.onRemoveNotePermamently(noteId)
             return
           }
           note.isRemoved = true
@@ -50,7 +50,7 @@ export default {
         })
     },
 
-    onRemovePermamentlyNote(noteId) {
+    onRemoveNotePermamently(noteId) {
       noteService.remove(noteId)
         .then(() => {
           const idx = this.notes.findIndex(note => note.id === noteId)
@@ -62,8 +62,20 @@ export default {
         })
     },
 
+    onRemoveNotesPermamently(notes) {
+      if (!notes.length) return
+      return noteService.remove(notes[0].id)
+        .then(() => {
+          notes.splice(0, 1)
+          this.onRemoveNotesPermamently(notes)
+          showSuccessMsg('Empty trash succesfully')
+        })
+        .catch(err => {
+          showErrorMsg('Empty trash faild')
+        })
+    },
+
     onSaveNote(newNote) {
-      console.log('new note:', newNote)
       noteService.save(newNote)
         .then(() => {
           this.notes.unshift(newNote)
@@ -94,11 +106,9 @@ export default {
     onEmptyTrash() {
       let notes = this.notes.filter(note => note.isRemoved)
       if (!notes.length) return
-      confirm('Are you sure you want to empty all notes in trash?')
-
-      notes.forEach(note => {
-        this.onRemovePermamentlyNote(note.id)
-      })
+      if (!confirm('Are you sure you want to empty all notes in trash?')) return
+      this.onRemoveNotesPermamently(notes)
+      this.notes = this.notes.filter(note => !note.isRemoved)
     },
 
   },

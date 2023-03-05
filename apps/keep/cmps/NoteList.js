@@ -38,7 +38,6 @@ export default {
     },
 
     getOtherNotes() {
-      console.log('notes in list:', this.notes)
       return this.notes.filter(note => !note.isPinned)
     }
   },
