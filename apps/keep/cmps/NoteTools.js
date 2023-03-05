@@ -19,6 +19,7 @@ export default {
             </svg>
           </div>
           <div class="item btn-remove" title="remove" @click.prevent="remove"></div>
+          <div class="item btn-duplicate" title="duplicate" @click.prevent="duplicate"></div>
         </article>
   `,
 
@@ -31,6 +32,11 @@ export default {
 
     remove() {
       this.$emit('remove', this.note.id)
+    },
+
+    duplicate() {
+      this.note.id = null
+      eventBusService.emit('duplicateNote', this.note)
     },
 
     updateColor(color) {

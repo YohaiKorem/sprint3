@@ -118,7 +118,10 @@ export default {
 
     eventBusService.on('updateNote', this.updateNote)
     eventBusService.on('removeNote', this.onRemoveNote)
+    eventBusService.on('duplicateNote', this.onSaveNote)
   },
+
+
 
   emits: ['removeNote', 'updateNote'],
 
