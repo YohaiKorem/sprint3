@@ -98,6 +98,7 @@ export const noteService = {
   save,
   getEmptyNote,
   createImg,
+  saveNotes
 }
 
 function query(filterBy = { txt: '' }) {
@@ -126,6 +127,11 @@ function save(note, append = false) {
   }
 }
 
+function saveNotes(notes) {
+  console.log('note left:', notes)
+  return storageService.saveEntities(NOTE_KEY, notes)
+}
+
 function createImg(ev) {
   return new Promise(resolve => {
     const reader = new FileReader()
@@ -152,6 +158,7 @@ function getEmptyNote(info = { txt: '' }, type = 'NoteTxt') {
     info,
   }
 }
+
 
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)

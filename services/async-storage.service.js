@@ -4,9 +4,10 @@ export const storageService = {
     post,
     put,
     remove,
+    saveEntities
 }
 
-function query(entityType, delay = 200) {
+function query(entityType, delay = 500) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return new Promise(resolve => setTimeout(() => resolve(entities), delay))
 }
@@ -44,6 +45,11 @@ function remove(entityType, entityId) {
         entities.splice(idx, 1)
         _save(entityType, entities)
     })
+}
+
+function saveEntities(entityType, entities) {
+    _save(entityType, entities)
+    return query(entityType)
 }
 
 // Private functions
